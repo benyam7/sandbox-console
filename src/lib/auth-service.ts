@@ -66,6 +66,9 @@ export const AuthService = {
     // Get stored user
     getUser(): User | null {
         if (typeof window === 'undefined') return null;
+        if (!this.isAuthenticated()) {
+            return null;
+        }
         const stored = localStorage.getItem(USER_KEY);
         return stored ? JSON.parse(stored) : null;
     },

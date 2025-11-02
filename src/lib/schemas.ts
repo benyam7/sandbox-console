@@ -27,6 +27,7 @@ export type AuthContext = {
     login: (data: LoginFormData) => Promise<{ user: User; token: AuthToken }>;
     logout: () => void;
     refreshToken: () => Promise<void>;
+    continueAsGuest: () => Promise<void>;
 };
 export type AuthToken = z.infer<typeof AuthTokenSchema>;
 export type User = z.infer<typeof UserSchema>;

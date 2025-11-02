@@ -51,6 +51,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         []
     );
 
+    const continueAsGuest = useCallback(async () => {
+        setIsLoading(true);
+        try {
+            await AuthService.continueAsGuest();
+            const { user } = await AuthService.continueAsGuest();
+            setUser(user);
+        } catch (error) {
+            console.error(error);
+            throw error;
+        } finally {
+            setIsLoading(false);
+        }
+    }, []);
+
     const logout = useCallback(() => {
         AuthService.logout();
         setUser(null);
@@ -72,6 +86,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         login,
         logout,
         refreshToken,
+        continueAsGuest,
     };
 
     return (
