@@ -1,39 +1,41 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
-import { Button } from './components/ui/button';
+import { BrowserRouter, Routes, Route, Outlet, Link } from 'react-router-dom';
+import Dashboard from './pages/dashboard';
+import ApiKeys from './pages/api-keys';
+import Usage from './pages/usage';
+import Docs from './pages/docs';
+import SignIn from './pages/sign-in';
+
+const Layout = () => (
+    <div>
+        <header style={{ padding: '1rem', background: '#f0f0f0' }}>
+            <h1>Sandbox Console</h1>
+            <nav>
+                <Link to="/dashboard">Dashboard</Link> |{' '}
+                <Link to="/api-keys">API Keys</Link> |{' '}
+                <Link to="/usage">Usage</Link> | <Link to="/docs">Docs</Link> |{' '}
+                <Link to="/sign-in">Sign In</Link>
+            </nav>
+        </header>
+        <main style={{ padding: '1rem' }}>
+            <Outlet />
+        </main>
+    </div>
+);
 
 function App() {
-    const [count, setCount] = useState(0);
-
     return (
-        <>
-            <div>
-                <a href="https://vite.dev" target="_blank">
-                    <img src={viteLogo} className="logo" alt="Vite logo" />
-                </a>
-                <a href="https://react.dev" target="_blank">
-                    <img
-                        src={reactLogo}
-                        className="logo react"
-                        alt="React logo"
-                    />
-                </a>
-            </div>
-            <h1>Vite + React</h1>
-            <div className="card">
-                <Button onClick={() => setCount((count) => count + 1)}>
-                    count is {count}
-                </Button>
-                <p>
-                    Edit <code>src/App.tsx</code> and save to test HMR
-                </p>
-            </div>
-            <p className="read-the-docs">
-                Click on the Vite and React logos to learn more
-            </p>
-        </>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Layout />}>
+                    <Route path="dashboard" element={<Dashboard />} />
+                    <Route path="api-keys" element={<ApiKeys />} />
+                    <Route path="usage" element={<Usage />} />
+                    <Route path="docs" element={<Docs />} />
+                    <Route path="sign-in" element={<SignIn />} />
+                    <Route path="*" element={<div>404 Not Found</div>} />
+                </Route>
+            </Routes>
+        </BrowserRouter>
     );
 }
 
