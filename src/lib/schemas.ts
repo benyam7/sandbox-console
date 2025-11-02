@@ -12,7 +12,7 @@ export const UserSchema = z.object({
     id: z.string(),
     email: z.email(),
     name: z.string(),
-    role: z.enum(['user', 'admin']),
+    role: z.enum(['user', 'guest']),
 });
 
 export const LoginFormSchema = z.object({
