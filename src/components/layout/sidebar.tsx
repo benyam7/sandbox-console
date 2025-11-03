@@ -1,14 +1,19 @@
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/contexts/auth-context';
 import { LayoutDashboard, LogOut, Key, ChartLine, Book } from 'lucide-react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 
 export default function Sidebar() {
     const { user, logout } = useAuth();
+    const location = useLocation();
     const navigate = useNavigate();
     const handleLogout = () => {
         logout();
         navigate('/sign-in');
+    };
+    const isActive = (href: string) => {
+        if (href !== '/' && location.pathname.startsWith(href)) return true;
+        return false;
     };
 
     return (
@@ -43,7 +48,11 @@ export default function Sidebar() {
                 <Link to="/dashboard" className="block">
                     <Button
                         variant="ghost"
-                        className="w-full justify-start text-sidebar-foreground hover:bg-sidebar-accent"
+                        className={`w-full justify-start text-sidebar-foreground ${
+                            isActive('/dashboard')
+                                ? 'bg-sidebar-accent text-sidebar-accent-foreground'
+                                : 'hover:bg-sidebar-accent'
+                        }`}
                     >
                         <LayoutDashboard className="h-4 w-4 mr-2" />
                         Dashboard
@@ -53,7 +62,11 @@ export default function Sidebar() {
                 <Link to="/api-keys" className="block">
                     <Button
                         variant="ghost"
-                        className="w-full justify-start text-sidebar-foreground hover:bg-sidebar-accent"
+                        className={`w-full justify-start text-sidebar-foreground ${
+                            isActive('/api-keys')
+                                ? 'bg-sidebar-accent text-sidebar-accent-foreground'
+                                : 'hover:bg-sidebar-accent'
+                        }`}
                     >
                         <Key className="h-4 w-4 mr-2" />
                         API Keys
@@ -63,7 +76,11 @@ export default function Sidebar() {
                 <Link to="/usage" className="block">
                     <Button
                         variant="ghost"
-                        className="w-full justify-start text-sidebar-foreground hover:bg-sidebar-accent"
+                        className={`w-full justify-start text-sidebar-foreground ${
+                            isActive('/usage')
+                                ? 'bg-sidebar-accent text-sidebar-accent-foreground'
+                                : 'hover:bg-sidebar-accent'
+                        }`}
                     >
                         <ChartLine className="h-4 w-4 mr-2" />
                         Usage
@@ -73,7 +90,11 @@ export default function Sidebar() {
                 <Link to="/docs" className="block">
                     <Button
                         variant="ghost"
-                        className="w-full justify-start text-sidebar-foreground hover:bg-sidebar-accent"
+                        className={`w-full justify-start text-sidebar-foreground ${
+                            isActive('/docs')
+                                ? 'bg-sidebar-accent text-sidebar-accent-foreground'
+                                : 'hover:bg-sidebar-accent'
+                        }`}
                     >
                         <Book className="h-4 w-4 mr-2" />
                         Docs
