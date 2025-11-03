@@ -1,6 +1,5 @@
 'use client';
 
-import type React from 'react';
 import Header from './header';
 import { useIsMobile } from '@/hooks/use-mobile';
 import Sidebar from './sidebar';

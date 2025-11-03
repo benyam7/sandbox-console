@@ -5,6 +5,7 @@ import Usage from './pages/usage';
 import Docs from './pages/docs';
 import SignIn from './pages/sign-in';
 import MainLayout from './components/layout/main-layout';
+import ProtectedRoute from './components/auth/protected-route';
 import { AuthProvider } from './contexts/auth-context';
 
 function App() {
@@ -12,7 +13,11 @@ function App() {
         <AuthProvider>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<MainLayout />}>
+                    <Route path="/" element={
+                        <ProtectedRoute>
+                            <MainLayout />
+                        </ProtectedRoute>
+                    }>
                         <Route path="dashboard" element={<Dashboard />} />
                         <Route path="api-keys" element={<ApiKeys />} />
                         <Route path="usage" element={<Usage />} />
