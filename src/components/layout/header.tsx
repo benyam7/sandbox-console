@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Menu } from 'lucide-react';
 import { ModeToggle } from '@/components/theme/mode-toggle';
+import { featureFlags } from '@/lib/feature-flags';
 
 interface HeaderProps {
     onMenuClick: () => void;
@@ -23,7 +24,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
                 </div>
 
                 <div className="flex items-center gap-2">
-                    <ModeToggle />
+                    {featureFlags.enableThemeToggle && <ModeToggle />}
                 </div>
             </div>
         </header>
