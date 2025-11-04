@@ -14,6 +14,13 @@ import {
     CardHeader,
     CardTitle,
 } from '@/components/ui/card';
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
 import type { UsageEvent, RequestType } from '@/lib/schemas';
 import { UsageService } from '@/lib/usage-service';
@@ -30,10 +37,33 @@ interface UsageTableProps {
 export function UsageTable({ events }: UsageTableProps) {
     const [selectedTypes, setSelectedTypes] =
         React.useState<RequestType[]>(ALL_REQUEST_TYPES);
+    const [timeRange, setTimeRange] = React.useState('90d');
+
+    // Filter events based on time range
+    const timeFilteredEvents = React.useMemo(() => {
+        if (events.length === 0) return [];
+
+        const now = new Date();
+        let daysToShow = 90;
+
+        if (timeRange === '30d') {
+            daysToShow = 30;
+        } else if (timeRange === '7d') {
+            daysToShow = 7;
+        }
+
+        const cutoffDate = new Date(now);
+        cutoffDate.setDate(cutoffDate.getDate() - daysToShow);
+
+        return events.filter((event) => {
+            const eventDate = new Date(event.date);
+            return eventDate >= cutoffDate;
+        });
+    }, [events, timeRange]);
 
     // Filter events based on selected types
     const filteredEvents = UsageService.filterEventsByType(
-        events,
+        timeFilteredEvents,
         selectedTypes
     );
     const formatDate = (date: Date) => {
@@ -53,10 +83,31 @@ export function UsageTable({ events }: UsageTableProps) {
                         Recent API usage events and costs
                     </CardDescription>
                 </div>
-                <RequestTypeSelector
-                    selectedTypes={selectedTypes}
-                    onSelectionChange={setSelectedTypes}
-                />
+                <div className="flex items-center gap-2">
+                    <RequestTypeSelector
+                        selectedTypes={selectedTypes}
+                        onSelectionChange={setSelectedTypes}
+                    />
+                    <Select value={timeRange} onValueChange={setTimeRange}>
+                        <SelectTrigger
+                            className="w-[160px] rounded-lg"
+                            aria-label="Select a time range"
+                        >
+                            <SelectValue placeholder="Last 3 months" />
+                        </SelectTrigger>
+                        <SelectContent className="rounded-xl">
+                            <SelectItem value="90d" className="rounded-lg">
+                                Last 3 months
+                            </SelectItem>
+                            <SelectItem value="30d" className="rounded-lg">
+                                Last 30 days
+                            </SelectItem>
+                            <SelectItem value="7d" className="rounded-lg">
+                                Last 7 days
+                            </SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
             </CardHeader>
             <CardContent>
                 <Table>
