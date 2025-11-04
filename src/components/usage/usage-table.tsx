@@ -207,7 +207,7 @@ export function UsageTable({ events, apiKeys, userId }: UsageTableProps) {
                     </Select>
                 </div>
             </CardHeader>
-            <CardContent>
+            <CardContent className="h-[400px] overflow-y-auto">
                 <Table>
                     <TableHeader>
                         <TableRow>
