@@ -67,6 +67,7 @@ export function ShowKeyModal({
                                     variant="ghost"
                                     onClick={handleCopyToClipboard}
                                     className="shrink-0"
+                                    data-testid="copy-api-key-button"
                                 >
                                     {isCopied ? (
                                         <Check className="h-4 w-4 text-green-600" />

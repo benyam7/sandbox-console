@@ -89,13 +89,8 @@ test.describe('API Keys - Create Tests', () => {
         const keyElement = page.locator('code').filter({ hasText: /^zk_/ });
         await expect(keyElement).toBeVisible();
 
-        // Verify copy button is present (find button near the code element)
-        const copyButton = page
-            .locator('.flex.items-center.gap-2')
-            .filter({ has: keyElement })
-            .getByRole('button')
-            .first();
-        await expect(copyButton).toBeVisible();
+        // Verify copy button is present
+        await expect(page.getByTestId('copy-api-key-button')).toBeVisible();
 
         // Verify warning message
         await expect(
@@ -138,11 +133,7 @@ test.describe('API Keys - Create Tests', () => {
         expect(keyText).toMatch(/^zk_/);
 
         // Click the copy button
-        const copyButton = page
-            .getByRole('button')
-            .filter({ has: page.locator('svg') })
-            .first();
-        await copyButton.click();
+        await page.getByTestId('copy-api-key-button').click();
 
         // Wait a bit for the copy to complete
         await page.waitForTimeout(500);
@@ -538,11 +529,7 @@ test.describe('API Keys - Regenerate Tests', () => {
         expect(newKey).toMatch(/^zk_/);
 
         // Click copy button
-        const copyButton = page
-            .getByRole('button')
-            .filter({ has: page.locator('svg') })
-            .first();
-        await copyButton.click();
+        await page.getByTestId('copy-api-key-button').click();
 
         // Wait for copy to complete
         await page.waitForTimeout(500);
