@@ -37,15 +37,19 @@ export default function UsagePage() {
                         name: apiKey?.name || ku.keyId,
                     };
                 });
-                setApiKeys(keyInfo);
 
-                // Initial load with all keys
-                const aggregatedUsage =
-                    await UsageService.getAggregatedDailyUsage(user.id);
-                const allEvents = await UsageService.getAllEvents(user.id);
+                // If user has API keys, load usage data
+                if (userApiKeys.length > 0) {
+                    const aggregatedUsage =
+                        await UsageService.getAggregatedDailyUsage(user.id);
+                    const allEvents = await UsageService.getAllEvents(user.id);
 
-                setDailyUsage(aggregatedUsage);
-                setEvents(allEvents);
+                    setDailyUsage(aggregatedUsage);
+                    setEvents(allEvents);
+                    setApiKeys(keyInfo);
+                } else {
+                    setApiKeys([]);
+                }
             } catch (error) {
                 console.error('[v0] Error loading usage data:', error);
             } finally {

@@ -114,6 +114,57 @@ export function UsageTable({ events, apiKeys, userId }: UsageTableProps) {
         });
     };
 
+    // Show empty state if no API keys exist
+    if (apiKeys.length === 0) {
+        return (
+            <Card>
+                <CardHeader className="border-b">
+                    <CardTitle>Usage Events</CardTitle>
+                    <CardDescription>
+                        Recent API usage events and costs
+                    </CardDescription>
+                </CardHeader>
+                <CardContent className="flex flex-col items-center justify-center py-12 text-center">
+                    <div className="rounded-full bg-muted p-3 mb-4">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="text-muted-foreground"
+                        >
+                            <rect
+                                width="8"
+                                height="4"
+                                x="8"
+                                y="2"
+                                rx="1"
+                                ry="1"
+                            />
+                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+                            <path d="M12 11h4" />
+                            <path d="M12 16h4" />
+                            <path d="M8 11h.01" />
+                            <path d="M8 16h.01" />
+                        </svg>
+                    </div>
+                    <h3 className="font-semibold text-lg mb-2">
+                        No API Keys Yet
+                    </h3>
+                    <p className="text-sm text-muted-foreground max-w-sm">
+                        Create your first API key to start tracking usage events
+                        and costs.
+                    </p>
+                </CardContent>
+            </Card>
+        );
+    }
+
     return (
         <Card>
             <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">

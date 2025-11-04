@@ -109,6 +109,46 @@ export function UsageChart({ dailyUsage, apiKeys, userId }: UsageChartProps) {
         });
     }, [fullChartData, timeRange]);
 
+    // Show empty state if no API keys exist
+    if (apiKeys.length === 0) {
+        return (
+            <Card className="pt-0">
+                <CardHeader className="border-b">
+                    <CardTitle>API Requests Over Time</CardTitle>
+                    <CardDescription>
+                        Total requests by status code
+                    </CardDescription>
+                </CardHeader>
+                <CardContent className="flex flex-col items-center justify-center py-12 text-center">
+                    <div className="rounded-full bg-muted p-3 mb-4">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="text-muted-foreground"
+                        >
+                            <path d="M3 3v18h18" />
+                            <path d="m19 9-5 5-4-4-3 3" />
+                        </svg>
+                    </div>
+                    <h3 className="font-semibold text-lg mb-2">
+                        No API Keys Yet
+                    </h3>
+                    <p className="text-sm text-muted-foreground max-w-sm">
+                        Create your first API key to start tracking usage and
+                        viewing analytics.
+                    </p>
+                </CardContent>
+            </Card>
+        );
+    }
+
     return (
         <Card className="pt-0">
             <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
