@@ -1,12 +1,5 @@
-import {
-    LineChart,
-    Line,
-    XAxis,
-    YAxis,
-    CartesianGrid,
-    Legend,
-    ResponsiveContainer,
-} from 'recharts';
+import * as React from 'react';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid } from 'recharts';
 import {
     Card,
     CardContent,
@@ -18,24 +11,86 @@ import {
     ChartContainer,
     ChartTooltip,
     ChartTooltipContent,
+    ChartLegend,
+    ChartLegendContent,
 } from '@/components/ui/chart';
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from '@/components/ui/select';
 import { UsageService } from '@/lib/usage-service';
-import type { DailyUsage } from '@/lib/schemas';
+import type { DailyUsage, RequestType } from '@/lib/schemas';
+import { REQUEST_TYPE_CONFIG } from '@/lib/request-type-config';
 
 interface UsageChartProps {
     dailyUsage: DailyUsage[];
+    selectedTypes: RequestType[];
 }
 
-export function UsageChart({ dailyUsage }: UsageChartProps) {
-    const chartData = UsageService.formatForChart(dailyUsage);
+export function UsageChart({ dailyUsage, selectedTypes }: UsageChartProps) {
+    const [timeRange, setTimeRange] = React.useState('90d');
+
+    // Get the full chart data first
+    const fullChartData = UsageService.formatForChart(
+        dailyUsage,
+        selectedTypes
+    );
+
+    // Filter data based on time range
+    const filteredData = React.useMemo(() => {
+        if (fullChartData.length === 0) return [];
+
+        const now = new Date();
+        let daysToShow = 90;
+
+        if (timeRange === '30d') {
+            daysToShow = 30;
+        } else if (timeRange === '7d') {
+            daysToShow = 7;
+        }
+
+        const cutoffDate = new Date(now);
+        cutoffDate.setDate(cutoffDate.getDate() - daysToShow);
+
+        return fullChartData.filter((item) => {
+            const itemDate = new Date(item.date);
+            return itemDate >= cutoffDate;
+        });
+    }, [fullChartData, timeRange]);
 
     return (
-        <Card>
-            <CardHeader>
-                <CardTitle>API Requests Over Time</CardTitle>
-                <CardDescription>Total requests by status code</CardDescription>
+        <Card className="pt-0">
+            <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
+                <div className="grid flex-1 gap-1">
+                    <CardTitle>API Requests Over Time</CardTitle>
+                    <CardDescription>
+                        Total requests by status code
+                    </CardDescription>
+                </div>
+                <Select value={timeRange} onValueChange={setTimeRange}>
+                    <SelectTrigger
+                        className="w-[160px] rounded-lg sm:ml-auto"
+                        aria-label="Select a time range"
+                    >
+                        <SelectValue placeholder="Last 3 months" />
+                    </SelectTrigger>
+                    <SelectContent className="rounded-xl">
+                        <SelectItem value="90d" className="rounded-lg">
+                            Last 3 months
+                        </SelectItem>
+                        <SelectItem value="30d" className="rounded-lg">
+                            Last 30 days
+                        </SelectItem>
+                        <SelectItem value="7d" className="rounded-lg">
+                            Last 7 days
+                        </SelectItem>
+                    </SelectContent>
+                </Select>
             </CardHeader>
-            <CardContent>
+            <CardContent className="px-2 pt-4 sm:px-6 sm:pt-6">
                 <ChartContainer
                     config={{
                         totalRequests: {
@@ -43,56 +98,163 @@ export function UsageChart({ dailyUsage }: UsageChartProps) {
                             color: 'hsl(var(--chart-1))',
                         },
                         requests2xx: {
-                            label: '2xx Success',
-                            color: 'hsl(var(--chart-2))',
+                            label: REQUEST_TYPE_CONFIG['2xx'].label,
+                            color: REQUEST_TYPE_CONFIG['2xx'].color,
                         },
                         requests4xx: {
-                            label: '4xx Client Error',
-                            color: 'hsl(var(--chart-3))',
+                            label: REQUEST_TYPE_CONFIG['4xx'].label,
+                            color: REQUEST_TYPE_CONFIG['4xx'].color,
                         },
                         requests5xx: {
-                            label: '5xx Server Error',
-                            color: 'hsl(var(--chart-4))',
+                            label: REQUEST_TYPE_CONFIG['5xx'].label,
+                            color: REQUEST_TYPE_CONFIG['5xx'].color,
                         },
                     }}
-                    className="h-[400px]"
+                    className="aspect-auto h-[250px] w-full"
                 >
-                    <ResponsiveContainer width="100%" height="100%">
-                        <LineChart
-                            data={chartData}
-                            margin={{ top: 5, right: 30, left: 0, bottom: 5 }}
-                        >
-                            <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="date" />
-                            <YAxis />
-                            <ChartTooltip content={<ChartTooltipContent />} />
-                            <Legend />
-                            <Line
-                                type="monotone"
-                                dataKey="totalRequests"
-                                stroke="var(--color-totalRequests)"
-                                strokeWidth={2}
-                            />
-                            <Line
-                                type="monotone"
-                                dataKey="requests2xx"
-                                stroke="var(--color-requests2xx)"
-                                strokeWidth={1}
-                            />
-                            <Line
-                                type="monotone"
-                                dataKey="requests4xx"
-                                stroke="var(--color-requests4xx)"
-                                strokeWidth={1}
-                            />
-                            <Line
-                                type="monotone"
+                    <AreaChart
+                        data={filteredData}
+                        margin={{ top: 5, right: 10, left: 0, bottom: 0 }}
+                    >
+                        <defs>
+                            <linearGradient
+                                id="fillTotalRequests"
+                                x1="0"
+                                y1="0"
+                                x2="0"
+                                y2="1"
+                            >
+                                <stop
+                                    offset="5%"
+                                    stopColor="var(--color-totalRequests)"
+                                    stopOpacity={0.8}
+                                />
+                                <stop
+                                    offset="95%"
+                                    stopColor="var(--color-totalRequests)"
+                                    stopOpacity={0.1}
+                                />
+                            </linearGradient>
+                            <linearGradient
+                                id="fillRequests2xx"
+                                x1="0"
+                                y1="0"
+                                x2="0"
+                                y2="1"
+                            >
+                                <stop
+                                    offset="5%"
+                                    stopColor="var(--color-requests2xx)"
+                                    stopOpacity={0.8}
+                                />
+                                <stop
+                                    offset="95%"
+                                    stopColor="var(--color-requests2xx)"
+                                    stopOpacity={0.1}
+                                />
+                            </linearGradient>
+                            <linearGradient
+                                id="fillRequests4xx"
+                                x1="0"
+                                y1="0"
+                                x2="0"
+                                y2="1"
+                            >
+                                <stop
+                                    offset="5%"
+                                    stopColor="var(--color-requests4xx)"
+                                    stopOpacity={0.8}
+                                />
+                                <stop
+                                    offset="95%"
+                                    stopColor="var(--color-requests4xx)"
+                                    stopOpacity={0.1}
+                                />
+                            </linearGradient>
+                            <linearGradient
+                                id="fillRequests5xx"
+                                x1="0"
+                                y1="0"
+                                x2="0"
+                                y2="1"
+                            >
+                                <stop
+                                    offset="5%"
+                                    stopColor="var(--color-requests5xx)"
+                                    stopOpacity={0.8}
+                                />
+                                <stop
+                                    offset="95%"
+                                    stopColor="var(--color-requests5xx)"
+                                    stopOpacity={0.1}
+                                />
+                            </linearGradient>
+                        </defs>
+                        <CartesianGrid vertical={false} />
+                        <XAxis
+                            dataKey="date"
+                            tickLine={false}
+                            axisLine={false}
+                            tickMargin={8}
+                            minTickGap={32}
+                            tickFormatter={(value) => {
+                                const date = new Date(value);
+                                return date.toLocaleDateString('en-US', {
+                                    month: 'short',
+                                    day: 'numeric',
+                                });
+                            }}
+                        />
+                        <YAxis tickLine={false} axisLine={false} />
+                        <ChartTooltip
+                            cursor={false}
+                            content={
+                                <ChartTooltipContent
+                                    labelFormatter={(value) => {
+                                        return new Date(
+                                            value
+                                        ).toLocaleDateString('en-US', {
+                                            month: 'short',
+                                            day: 'numeric',
+                                            year: 'numeric',
+                                        });
+                                    }}
+                                    indicator="dot"
+                                />
+                            }
+                        />
+                        {selectedTypes.includes('5xx') && (
+                            <Area
                                 dataKey="requests5xx"
+                                type="natural"
+                                fill="url(#fillRequests5xx)"
                                 stroke="var(--color-requests5xx)"
-                                strokeWidth={1}
+                                stackId="a"
+                                name={REQUEST_TYPE_CONFIG['5xx'].label}
                             />
-                        </LineChart>
-                    </ResponsiveContainer>
+                        )}
+                        {selectedTypes.includes('4xx') && (
+                            <Area
+                                dataKey="requests4xx"
+                                type="natural"
+                                fill="url(#fillRequests4xx)"
+                                stroke="var(--color-requests4xx)"
+                                stackId="a"
+                                name={REQUEST_TYPE_CONFIG['4xx'].label}
+                            />
+                        )}
+                        {selectedTypes.includes('2xx') && (
+                            <Area
+                                dataKey="requests2xx"
+                                type="natural"
+                                fill="url(#fillRequests2xx)"
+                                stroke="var(--color-requests2xx)"
+                                stackId="a"
+                                name={REQUEST_TYPE_CONFIG['2xx'].label}
+                            />
+                        )}
+                        <ChartLegend content={<ChartLegendContent />} />
+                    </AreaChart>
                 </ChartContainer>
             </CardContent>
         </Card>

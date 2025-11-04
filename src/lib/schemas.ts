@@ -118,5 +118,6 @@ export type UsageEventKind = z.infer<typeof UsageEventKindSchema>;
 export type UsageEvent = z.infer<typeof UsageEventSchema>;
 export type DailyUsage = z.infer<typeof DailyUsageSchema>;
 export type KeyUsage = z.infer<typeof KeyUsageSchema>;
+export type RequestType = '2xx' | '4xx' | '5xx';
 
 // usage schemas end

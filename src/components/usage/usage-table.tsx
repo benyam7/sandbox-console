@@ -14,32 +14,27 @@ import {
     CardTitle,
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import type { UsageEvent } from '@/lib/schemas';
+import type { UsageEvent, RequestType } from '@/lib/schemas';
+import { UsageService } from '@/lib/usage-service';
+import { REQUEST_TYPE_CONFIG } from '@/lib/request-type-config';
 
 interface UsageTableProps {
     events: UsageEvent[];
+    selectedTypes: RequestType[];
 }
 
-export function UsageTable({ events }: UsageTableProps) {
+export function UsageTable({ events, selectedTypes }: UsageTableProps) {
+    // Filter events based on selected types
+    const filteredEvents = UsageService.filterEventsByType(
+        events,
+        selectedTypes
+    );
     const formatDate = (date: Date) => {
         return new Date(date).toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'short',
             day: 'numeric',
         });
-    };
-
-    const getEventTypeColor = (type: string) => {
-        switch (type) {
-            case 'request':
-                return 'bg-blue-100 text-blue-800';
-            case 'error':
-                return 'bg-red-100 text-red-800';
-            case 'custom':
-                return 'bg-purple-100 text-purple-800';
-            default:
-                return 'bg-gray-100 text-gray-800';
-        }
     };
 
     return (
@@ -62,31 +57,41 @@ export function UsageTable({ events }: UsageTableProps) {
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        {events.length === 0 ? (
+                        {filteredEvents.length === 0 ? (
                             <TableRow>
                                 <TableCell
                                     colSpan={5}
                                     className="text-center text-muted-foreground py-8"
                                 >
-                                    No usage events found
+                                    No usage events found for selected request
+                                    types
                                 </TableCell>
                             </TableRow>
                         ) : (
-                            events.map((event, index) => (
+                            filteredEvents.map((event, index) => (
                                 <TableRow key={index}>
                                     <TableCell>
                                         {formatDate(event.date)}
                                     </TableCell>
                                     <TableCell>
                                         <Badge
-                                            className={getEventTypeColor(
-                                                event.type
-                                            )}
+                                            variant="outline"
+                                            style={{
+                                                borderColor:
+                                                    REQUEST_TYPE_CONFIG[
+                                                        event.type
+                                                    ].chartColor,
+                                                color: REQUEST_TYPE_CONFIG[
+                                                    event.type
+                                                ].chartColor,
+                                            }}
                                         >
                                             {event.type}
                                         </Badge>
                                     </TableCell>
-                                    <TableCell>{event.kind}</TableCell>
+                                    <TableCell className="capitalize">
+                                        {event.kind}
+                                    </TableCell>
                                     <TableCell>{event.count}</TableCell>
                                     <TableCell className="text-right font-medium">
                                         ${event.cost.toFixed(2)}

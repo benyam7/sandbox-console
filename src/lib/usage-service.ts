@@ -3,6 +3,7 @@ import {
     type KeyUsage,
     type DailyUsage,
     type UsageEvent,
+    type RequestType,
 } from './schemas';
 
 // Cache for usage data to avoid repeated fetches
@@ -173,6 +174,61 @@ export const UsageService = {
         });
     },
 
+    // Filter events by request type
+    filterEventsByType(
+        events: UsageEvent[],
+        selectedTypes: RequestType[]
+    ): UsageEvent[] {
+        if (selectedTypes.length === 0) {
+            return events;
+        }
+        return events.filter((event) => selectedTypes.includes(event.type));
+    },
+
+    // Filter and recalculate daily usage based on selected request types
+    filterDailyUsageByTypes(
+        dailyUsage: DailyUsage[],
+        selectedTypes: RequestType[]
+    ): DailyUsage[] {
+        if (selectedTypes.length === 0 || selectedTypes.length === 3) {
+            return dailyUsage;
+        }
+
+        return dailyUsage.map((daily) => {
+            // Filter events by selected types
+            const filteredEvents = daily.events.filter((event) =>
+                selectedTypes.includes(event.type)
+            );
+
+            // Recalculate totals based on filtered events
+            const requests2xx = selectedTypes.includes('2xx')
+                ? daily.requests2xx
+                : 0;
+            const requests4xx = selectedTypes.includes('4xx')
+                ? daily.requests4xx
+                : 0;
+            const requests5xx = selectedTypes.includes('5xx')
+                ? daily.requests5xx
+                : 0;
+
+            const totalRequests = requests2xx + requests4xx + requests5xx;
+            const totalCost = filteredEvents.reduce(
+                (sum, event) => sum + event.cost,
+                0
+            );
+
+            return {
+                ...daily,
+                totalRequests,
+                requests2xx,
+                requests4xx,
+                requests5xx,
+                totalCost,
+                events: filteredEvents,
+            };
+        });
+    },
+
     // Get date range presets
     getDateRangePreset(preset: 'last7days' | 'last30days' | 'last90days'): {
         startDate: Date;
@@ -200,7 +256,10 @@ export const UsageService = {
     },
 
     // Format data for chart (recharts compatible)
-    formatForChart(dailyUsage: DailyUsage[]): Array<{
+    formatForChart(
+        dailyUsage: DailyUsage[],
+        selectedTypes?: RequestType[]
+    ): Array<{
         date: string;
         totalRequests: number;
         requests2xx: number;
@@ -208,7 +267,13 @@ export const UsageService = {
         requests5xx: number;
         totalCost: number;
     }> {
-        return dailyUsage
+        // Apply type filter if provided
+        const filteredData =
+            selectedTypes && selectedTypes.length > 0
+                ? this.filterDailyUsageByTypes(dailyUsage, selectedTypes)
+                : dailyUsage;
+
+        return filteredData
             .sort((a, b) => a.date.getTime() - b.date.getTime())
             .map((usage) => ({
                 date: usage.date.toISOString().split('T')[0],
@@ -282,7 +347,10 @@ export const UsageService = {
     },
 
     // Calculate summary statistics
-    calculateSummary(dailyUsage: DailyUsage[]): {
+    calculateSummary(
+        dailyUsage: DailyUsage[],
+        selectedTypes?: RequestType[]
+    ): {
         totalRequests: number;
         totalCost: number;
         avgRequestsPerDay: number;
@@ -290,7 +358,13 @@ export const UsageService = {
         successRate: number;
         errorRate: number;
     } {
-        if (dailyUsage.length === 0) {
+        // Apply type filter if provided
+        const filteredData =
+            selectedTypes && selectedTypes.length > 0
+                ? this.filterDailyUsageByTypes(dailyUsage, selectedTypes)
+                : dailyUsage;
+
+        if (filteredData.length === 0) {
             return {
                 totalRequests: 0,
                 totalCost: 0,
@@ -301,14 +375,23 @@ export const UsageService = {
             };
         }
 
-        const totalRequests = dailyUsage.reduce(
+        const totalRequests = filteredData.reduce(
             (sum, d) => sum + d.totalRequests,
             0
         );
-        const totalCost = dailyUsage.reduce((sum, d) => sum + d.totalCost, 0);
-        const total2xx = dailyUsage.reduce((sum, d) => sum + d.requests2xx, 0);
-        const total4xx = dailyUsage.reduce((sum, d) => sum + d.requests4xx, 0);
-        const total5xx = dailyUsage.reduce((sum, d) => sum + d.requests5xx, 0);
+        const totalCost = filteredData.reduce((sum, d) => sum + d.totalCost, 0);
+        const total2xx = filteredData.reduce(
+            (sum, d) => sum + d.requests2xx,
+            0
+        );
+        const total4xx = filteredData.reduce(
+            (sum, d) => sum + d.requests4xx,
+            0
+        );
+        const total5xx = filteredData.reduce(
+            (sum, d) => sum + d.requests5xx,
+            0
+        );
 
         const successRate =
             totalRequests > 0 ? (total2xx / totalRequests) * 100 : 0;
@@ -321,9 +404,9 @@ export const UsageService = {
             totalRequests,
             totalCost: Number(totalCost.toFixed(2)),
             avgRequestsPerDay: Number(
-                (totalRequests / dailyUsage.length).toFixed(0)
+                (totalRequests / filteredData.length).toFixed(0)
             ),
-            avgCostPerDay: Number((totalCost / dailyUsage.length).toFixed(2)),
+            avgCostPerDay: Number((totalCost / filteredData.length).toFixed(2)),
             successRate: Number(successRate.toFixed(2)),
             errorRate: Number(errorRate.toFixed(2)),
         };
