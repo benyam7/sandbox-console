@@ -1,73 +1,129 @@
-# React + TypeScript + Vite
+Decision:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project(sandboxconsole) uses a modern React setup that focuses on being easy to work with and maintain. For state management, it uses React's Context API instead of external Redux or Zustand. This makes things simpler since only authentication and theme need shared state. Routing is done with React Router v7, using nested routes and protected routes to clearly separate loggedin and public pages.
 
-Currently, two official plugins are available:
+The data layer uses different services (like AuthService and APIKeyService) and stores data in localStorage and json file. It also uses Zod to check data types at runtime. This setup is great for quick development without needing a backend, though it's limited to clientside storage.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+For forms, it uses React Hook Form with Zod for validation, keeping code short and typesafe. Testing is handled with Playwright for endtoend tests on major browsers, focusing more on real user flows than small unit tests.
 
-## React Compiler
+The project uses Vite for fast development, which is has quick HRM.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The UI is built using shadcn/ui and Tailwind CSS, offering flexibility. I chose shadcn/ui because it lets me fully control my components while still giving me nice, ready to use designs. Other libraries usually come as closed packages, but with shadcn/ui, I can edit every part of the code and make the components fit my project.
 
-## Expanding the ESLint configuration
+This is great for a developer console or sandbox project where I need flexibility, easy changes, and a consistent look. I can adjust the components to match the product's design without struggling with limits or extra style fixes.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Its open code style and easy to build structure also work well with modern tools and AI workflows, making it simple to improve, add new features, or connect with AI tools.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+In short, shadcn/ui is not just a library I use it's a base for creating my own design system with high quality components and full freedom to design.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Authentication Approach
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+**I chose Option C: Local mock session with localStoragebased token management.**
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+This approach mimics a real OIDC/OAuth flow by generating mock JWTstyle tokens with expiry timestamps, storing them in localStorage, and implementing proper token validation and refresh mechanisms. I chose this option because it:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. **Requires no external dependencies** No Auth0 account, API keys, or serverless endpoints needed, making the project immediately runnable for reviewers
+2. **Demonstrates realworld patterns** The implementation mirrors production authentication flows with token expiry, refresh logic, and protected route guards
+3. **Provides easy testing** Includes both credentialbased login (`user@example.com` / `password123`) and a "Continue as Guest" option for instant demo access
+4. **Simplifies the review process** Reviewers can explore the full application without signup friction while still seeing proper authentication boundaries
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+The tradeoff is that this approach is not productionready (tokens are visible in localStorage, no actual backend validation), but it perfectly demonstrates understanding of authentication patterns while keeping the focus on the console UI/UX implementation.
+
+### What I Would Do If I Had More Time
+
+#### Encryption & Decryption Logic, Secrets:
+
+I would use a proper key derivation function (e.g., PBKDF2, Argon2, etc.) to generate a deterministic encryption key from the user session.
+
+I would use a secure and wellmaintained cryptography library for handling encryption and decryption.
+
+I would move all encryptionrelated services to the backend. Currently, we're using VITE_ENCRYPTION_SECRET, which makes the key accessible to the client. Given the current setup, this was the most practical option, but ideally, the logic should reside on the backend.
+
+#### UI & User Experience Improvements:
+
+I would make the UI fully mobile responsive. Specially, "usage" page looks broken.
+I would add pagination for the usage table and charts. Currently, both load all usage data at once; instead, I would implement lazy loading to fetch data on demand as the user scrolls or paginates.
+I would also implement a pagination UI for user listings and add a “Download CSV” button to allow users to export usage event data.
+
+#### Payments & API Integration:
+
+I would integrate a payment gateway so devs can be billed based on usage.
+I would associate usage data with the actual API keys generated by users. Currently, the usage data is static. Although we can filter by API key, these keys are mock values With more time, I would connect the usage data to the API keys created by users. The current “empty state” on the usage page simply checks whether the user has created an API key. If not, it displays an empty state; once the user creates an API key, it displays mock data.
+
+#### Testing & Validation:
+
+I would include more thorough endtoend (E2E) tests, particularly for the usage page and the overall application flow.
+
+Additional Improvements:
+
+I would record a walkthrough video to demonstrate the app's flow and features.
+
+### What worked and didn't work well with AI.
+
+Generating E2E tests worked well. It was easy to make adjustments once the structure was in place, and I didn't have to write repetitive code manually.
+Generating UI structures also worked well. AI was effective at setting up the initial layout and placing placeholders correctly, allowing me to finetune and make detailed UI adjustments efficiently.
+However, asking AI to make specific, targeted UI changes didn't work as well. I often had to provide very detailed context or stepbystep instructions for accurate results.
+
+### Feature Flags
+
+This project implements a scalable feature flag system using environment variables. Feature flags allow you to enable or disable features without redeploying code, making it easy to test features, perform gradual rollouts, or A/B test changes.
+
+#### Current Feature Flags
+
+**Theme Toggle** (`VITE_FEATURE_THEME_TOGGLE`)
+
+Controls whether the theme switcher (dark/light mode) appears in the header
+Default: `true` (enabled)
+Set to `false` to disable the theme toggle UI
+
+#### How to Use Feature Flags
+
+1. **Copy the example environment file:**
+
+    ```bash
+    cp .env.example .env
+    ```
+
+2. **Edit `.env` to enable/disable features:**
+
+    ```bash
+    # Enable theme toggle (default)
+    VITE_FEATURE_THEME_TOGGLE=true
+
+    # Disable theme toggle
+    VITE_FEATURE_THEME_TOGGLE=false
+    ```
+
+3. **Restart the dev server** for changes to take effect:
+    ```bash
+    pnpm dev
+    ```
+
+### Component and Charting Libraries
+
+I chose shadcn/ui as the component library. It provides a modern, accessible, and composable set of React components built on Radix UI and styled with Tailwind CSS. It offers excellent developer ergonomics, consistent design tokens, and easy customization ideal for building a clean, productionlike dashboard quickly.
+
+For charting, I used shadcn/ui's builtin chart components, which internally leverage Recharts. This integration allows me to use a consistent design language across the entire app while benefiting from Recharts' robust and declarative charting capabilities.
+
+This choice keeps the stack cohesive a single design system for both UI and data visualization while still providing flexibility and performance. It also mirrors how realworld teams build unified design systems with integrated visualization components.
+
+### How to run locally:
+
+1. Clone repo
+2. `pnpm install`
+3. Update your `.env` file based on `.env.example`
+4. `pnpm dev`
+
+### How run playwright tests:
+
+1. Clone repo
+2. `pnpm install`
+3. `pnpm run playwright:test`
+
+### Estimate of time spent
+
+I spent 3 days but from the 3 days, I spent about 4 hours to 6 hours. Hence 10 ~ 18 hours.
+
+### Deployed
+
+Live version on the app can be found at:
