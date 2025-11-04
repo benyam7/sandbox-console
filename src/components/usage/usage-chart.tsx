@@ -112,7 +112,7 @@ export function UsageChart({ dailyUsage, apiKeys, userId }: UsageChartProps) {
     // Show empty state if no API keys exist
     if (apiKeys.length === 0) {
         return (
-            <Card className="pt-0">
+            <Card>
                 <CardHeader className="border-b">
                     <CardTitle>API Requests Over Time</CardTitle>
                     <CardDescription>
