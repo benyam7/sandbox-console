@@ -117,7 +117,7 @@ export const AuthService = {
         await new Promise((resolve) => setTimeout(resolve, 500));
 
         const guestUser: User = {
-            id: 'guest_' + Date.now(),
+            id: 'guest_id',
             email: 'guest@zama.dev',
             name: 'Guest User',
             role: 'guest',

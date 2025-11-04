@@ -53,7 +53,6 @@ export function CreateAPIKeyModal({
     });
 
     const handleCreateKey = async (data: CreateKeyInput) => {
-        console.log('handleCreateKey', data);
         if (!user) return;
 
         try {
