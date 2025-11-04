@@ -23,15 +23,20 @@ import {
 } from '@/components/ui/select';
 import { UsageService } from '@/lib/usage-service';
 import type { DailyUsage, RequestType } from '@/lib/schemas';
-import { REQUEST_TYPE_CONFIG } from '@/lib/request-type-config';
+import {
+    REQUEST_TYPE_CONFIG,
+    ALL_REQUEST_TYPES,
+} from '@/lib/request-type-config';
+import { RequestTypeSelector } from './request-type-selector';
 
 interface UsageChartProps {
     dailyUsage: DailyUsage[];
-    selectedTypes: RequestType[];
 }
 
-export function UsageChart({ dailyUsage, selectedTypes }: UsageChartProps) {
+export function UsageChart({ dailyUsage }: UsageChartProps) {
     const [timeRange, setTimeRange] = React.useState('90d');
+    const [selectedTypes, setSelectedTypes] =
+        React.useState<RequestType[]>(ALL_REQUEST_TYPES);
 
     // Get the full chart data first
     const fullChartData = UsageService.formatForChart(
@@ -70,25 +75,31 @@ export function UsageChart({ dailyUsage, selectedTypes }: UsageChartProps) {
                         Total requests by status code
                     </CardDescription>
                 </div>
-                <Select value={timeRange} onValueChange={setTimeRange}>
-                    <SelectTrigger
-                        className="w-[160px] rounded-lg sm:ml-auto"
-                        aria-label="Select a time range"
-                    >
-                        <SelectValue placeholder="Last 3 months" />
-                    </SelectTrigger>
-                    <SelectContent className="rounded-xl">
-                        <SelectItem value="90d" className="rounded-lg">
-                            Last 3 months
-                        </SelectItem>
-                        <SelectItem value="30d" className="rounded-lg">
-                            Last 30 days
-                        </SelectItem>
-                        <SelectItem value="7d" className="rounded-lg">
-                            Last 7 days
-                        </SelectItem>
-                    </SelectContent>
-                </Select>
+                <div className="flex items-center gap-2">
+                    <RequestTypeSelector
+                        selectedTypes={selectedTypes}
+                        onSelectionChange={setSelectedTypes}
+                    />
+                    <Select value={timeRange} onValueChange={setTimeRange}>
+                        <SelectTrigger
+                            className="w-[160px] rounded-lg"
+                            aria-label="Select a time range"
+                        >
+                            <SelectValue placeholder="Last 3 months" />
+                        </SelectTrigger>
+                        <SelectContent className="rounded-xl">
+                            <SelectItem value="90d" className="rounded-lg">
+                                Last 3 months
+                            </SelectItem>
+                            <SelectItem value="30d" className="rounded-lg">
+                                Last 30 days
+                            </SelectItem>
+                            <SelectItem value="7d" className="rounded-lg">
+                                Last 7 days
+                            </SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
             </CardHeader>
             <CardContent className="px-2 pt-4 sm:px-6 sm:pt-6">
                 <ChartContainer

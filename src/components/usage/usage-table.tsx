@@ -1,3 +1,4 @@
+import * as React from 'react';
 import {
     Table,
     TableBody,
@@ -16,14 +17,20 @@ import {
 import { Badge } from '@/components/ui/badge';
 import type { UsageEvent, RequestType } from '@/lib/schemas';
 import { UsageService } from '@/lib/usage-service';
-import { REQUEST_TYPE_CONFIG } from '@/lib/request-type-config';
+import {
+    REQUEST_TYPE_CONFIG,
+    ALL_REQUEST_TYPES,
+} from '@/lib/request-type-config';
+import { RequestTypeSelector } from './request-type-selector';
 
 interface UsageTableProps {
     events: UsageEvent[];
-    selectedTypes: RequestType[];
 }
 
-export function UsageTable({ events, selectedTypes }: UsageTableProps) {
+export function UsageTable({ events }: UsageTableProps) {
+    const [selectedTypes, setSelectedTypes] =
+        React.useState<RequestType[]>(ALL_REQUEST_TYPES);
+
     // Filter events based on selected types
     const filteredEvents = UsageService.filterEventsByType(
         events,
@@ -39,11 +46,17 @@ export function UsageTable({ events, selectedTypes }: UsageTableProps) {
 
     return (
         <Card>
-            <CardHeader>
-                <CardTitle>Usage Events</CardTitle>
-                <CardDescription>
-                    Recent API usage events and costs
-                </CardDescription>
+            <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
+                <div className="grid flex-1 gap-1">
+                    <CardTitle>Usage Events</CardTitle>
+                    <CardDescription>
+                        Recent API usage events and costs
+                    </CardDescription>
+                </div>
+                <RequestTypeSelector
+                    selectedTypes={selectedTypes}
+                    onSelectionChange={setSelectedTypes}
+                />
             </CardHeader>
             <CardContent>
                 <Table>
