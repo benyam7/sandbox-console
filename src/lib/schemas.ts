@@ -121,3 +121,21 @@ export type KeyUsage = z.infer<typeof KeyUsageSchema>;
 export type RequestType = '2xx' | '4xx' | '5xx';
 
 // usage schemas end
+
+// docs schemas start
+
+export const CodeExampleConfigSchema = z.object({
+    title: z.string(),
+    code: z.string(),
+    language: z.string().optional(),
+});
+
+export const DocsConfigSchema = z.object({
+    baseUrl: z.string(),
+    apiEndpoint: z.string(),
+});
+
+export type CodeExampleConfig = z.infer<typeof CodeExampleConfigSchema>;
+export type DocsConfig = z.infer<typeof DocsConfigSchema>;
+
+// docs schemas end
