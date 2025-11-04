@@ -153,11 +153,11 @@
     --border: #e5e5e5;
     --input: #e5e5e5;
     --ring: #a1a1a1;
-    --chart-1: #737373;
-    --chart-2: #737373;
-    --chart-3: #737373;
-    --chart-4: #737373;
-    --chart-5: #737373;
+    --chart-1: 220 70% 50%; /* Blue for Total Requests */
+    --chart-2: 142 76% 36%; /* Green for 2xx Success */
+    --chart-3: 48 96% 53%; /* Orange/Yellow for 4xx Client Errors */
+    --chart-4: 0 84% 60%; /* Red for 5xx Server Errors */
+    --chart-5: 280 60% 60%; /* Purple for additional metrics */
     --radius: 0rem;
     --sidebar: #fafafa;
     --sidebar-foreground: #0a0a0a;
@@ -195,11 +195,11 @@
     --border: #383838;
     --input: #525252;
     --ring: #737373;
-    --chart-1: #737373;
-    --chart-2: #737373;
-    --chart-3: #737373;
-    --chart-4: #737373;
-    --chart-5: #737373;
+    --chart-1: 220 70% 50%; /* Blue for Total Requests */
+    --chart-2: 142 76% 36%; /* Green for 2xx Success */
+    --chart-3: 48 96% 53%; /* Orange/Yellow for 4xx Client Errors */
+    --chart-4: 0 84% 60%; /* Red for 5xx Server Errors */
+    --chart-5: 280 60% 60%; /* Purple for additional metrics */
     --sidebar: #171717;
     --sidebar-foreground: #fafafa;
     --sidebar-primary: #fafafa;

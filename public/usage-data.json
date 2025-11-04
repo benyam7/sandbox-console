@@ -2,7 +2,7 @@
     "usageData": [
         {
             "keyId": "key-1",
-            "userId": "guest-123",
+            "userId": "guest_id",
             "dailyUsage": [
                 {
                     "date": "2025-11-04",
@@ -1310,7 +1310,7 @@
         },
         {
             "keyId": "key-2",
-            "userId": "guest-123",
+            "userId": "guest_id",
             "dailyUsage": [
                 {
                     "date": "2025-11-04",
@@ -1977,7 +1977,7 @@
         },
         {
             "keyId": "key-3",
-            "userId": "guest-123",
+            "userId": "guest_id",
             "dailyUsage": [
                 {
                     "date": "2025-11-04",
