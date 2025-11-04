@@ -81,3 +81,42 @@ export type CreateKeyInput = z.infer<typeof CreateKeyInputSchema>;
 export type KeyOperationInput = z.infer<typeof KeyOperationInputSchema>;
 export type UserIdInput = z.infer<typeof UserIdInputSchema>;
 // API Keys schemas end
+
+// usage schemas start
+export const UsageEventKindSchema = z.enum(['request', 'error', 'custom']);
+
+const DateSchema = z
+    .string()
+    .or(z.date())
+    .transform((val) => (typeof val === 'string' ? new Date(val) : val));
+
+export const UsageEventSchema = z.object({
+    type: z.enum(['2xx', '4xx', '5xx']),
+    cost: z.number().min(0),
+    date: DateSchema,
+    kind: UsageEventKindSchema,
+    count: z.number().int().min(1),
+});
+
+export const DailyUsageSchema = z.object({
+    date: DateSchema,
+    totalRequests: z.number().int().min(0),
+    requests2xx: z.number().int().min(0),
+    requests4xx: z.number().int().min(0),
+    requests5xx: z.number().int().min(0),
+    totalCost: z.number().min(0),
+    events: z.array(UsageEventSchema),
+});
+
+export const KeyUsageSchema = z.object({
+    keyId: z.string().min(1, 'Key ID is required'),
+    userId: z.string().min(1, 'User ID is required'),
+    dailyUsage: z.array(DailyUsageSchema),
+});
+
+export type UsageEventKind = z.infer<typeof UsageEventKindSchema>;
+export type UsageEvent = z.infer<typeof UsageEventSchema>;
+export type DailyUsage = z.infer<typeof DailyUsageSchema>;
+export type KeyUsage = z.infer<typeof KeyUsageSchema>;
+
+// usage schemas end

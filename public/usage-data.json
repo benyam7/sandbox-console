@@ -1,0 +1,2336 @@
+{
+    "usageData": [
+        {
+            "keyId": "key-1",
+            "userId": "guest-123",
+            "dailyUsage": [
+                {
+                    "date": "2025-11-04",
+                    "totalRequests": 1250,
+                    "requests2xx": 1180,
+                    "requests4xx": 50,
+                    "requests5xx": 20,
+                    "totalCost": 0.25,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.2,
+                            "date": "2025-11-04",
+                            "kind": "request",
+                            "count": 1180
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.03,
+                            "date": "2025-11-04",
+                            "kind": "error",
+                            "count": 50
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.02,
+                            "date": "2025-11-04",
+                            "kind": "error",
+                            "count": 20
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-11-03",
+                    "totalRequests": 980,
+                    "requests2xx": 920,
+                    "requests4xx": 35,
+                    "requests5xx": 25,
+                    "totalCost": 0.18,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.15,
+                            "date": "2025-11-03",
+                            "kind": "request",
+                            "count": 920
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.02,
+                            "date": "2025-11-03",
+                            "kind": "error",
+                            "count": 35
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-11-03",
+                            "kind": "error",
+                            "count": 25
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-11-02",
+                    "totalRequests": 1520,
+                    "requests2xx": 1450,
+                    "requests4xx": 40,
+                    "requests5xx": 30,
+                    "totalCost": 0.32,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.28,
+                            "date": "2025-11-02",
+                            "kind": "request",
+                            "count": 1450
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.02,
+                            "date": "2025-11-02",
+                            "kind": "error",
+                            "count": 40
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.02,
+                            "date": "2025-11-02",
+                            "kind": "error",
+                            "count": 30
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-11-01",
+                    "totalRequests": 1100,
+                    "requests2xx": 1050,
+                    "requests4xx": 30,
+                    "requests5xx": 20,
+                    "totalCost": 0.22,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.2,
+                            "date": "2025-11-01",
+                            "kind": "request",
+                            "count": 1050
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-11-01",
+                            "kind": "error",
+                            "count": 30
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-11-01",
+                            "kind": "error",
+                            "count": 20
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-31",
+                    "totalRequests": 890,
+                    "requests2xx": 850,
+                    "requests4xx": 25,
+                    "requests5xx": 15,
+                    "totalCost": 0.15,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.13,
+                            "date": "2025-10-31",
+                            "kind": "request",
+                            "count": 850
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-10-31",
+                            "kind": "error",
+                            "count": 25
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-31",
+                            "kind": "error",
+                            "count": 15
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-30",
+                    "totalRequests": 1350,
+                    "requests2xx": 1280,
+                    "requests4xx": 45,
+                    "requests5xx": 25,
+                    "totalCost": 0.28,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.25,
+                            "date": "2025-10-30",
+                            "kind": "request",
+                            "count": 1280
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.02,
+                            "date": "2025-10-30",
+                            "kind": "error",
+                            "count": 45
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-30",
+                            "kind": "error",
+                            "count": 25
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-29",
+                    "totalRequests": 1100,
+                    "requests2xx": 1050,
+                    "requests4xx": 30,
+                    "requests5xx": 20,
+                    "totalCost": 0.22,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.2,
+                            "date": "2025-10-29",
+                            "kind": "request",
+                            "count": 1050
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-10-29",
+                            "kind": "error",
+                            "count": 30
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-29",
+                            "kind": "error",
+                            "count": 20
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-28",
+                    "totalRequests": 1450,
+                    "requests2xx": 1380,
+                    "requests4xx": 45,
+                    "requests5xx": 25,
+                    "totalCost": 0.29,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.26,
+                            "date": "2025-10-28",
+                            "kind": "request",
+                            "count": 1380
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.02,
+                            "date": "2025-10-28",
+                            "kind": "error",
+                            "count": 45
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-28",
+                            "kind": "error",
+                            "count": 25
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-27",
+                    "totalRequests": 1200,
+                    "requests2xx": 1140,
+                    "requests4xx": 35,
+                    "requests5xx": 25,
+                    "totalCost": 0.24,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.21,
+                            "date": "2025-10-27",
+                            "kind": "request",
+                            "count": 1140
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.02,
+                            "date": "2025-10-27",
+                            "kind": "error",
+                            "count": 35
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-27",
+                            "kind": "error",
+                            "count": 25
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-26",
+                    "totalRequests": 950,
+                    "requests2xx": 900,
+                    "requests4xx": 30,
+                    "requests5xx": 20,
+                    "totalCost": 0.17,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.15,
+                            "date": "2025-10-26",
+                            "kind": "request",
+                            "count": 900
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-10-26",
+                            "kind": "error",
+                            "count": 30
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-26",
+                            "kind": "error",
+                            "count": 20
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-25",
+                    "totalRequests": 1300,
+                    "requests2xx": 1240,
+                    "requests4xx": 40,
+                    "requests5xx": 20,
+                    "totalCost": 0.27,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.24,
+                            "date": "2025-10-25",
+                            "kind": "request",
+                            "count": 1240
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.02,
+                            "date": "2025-10-25",
+                            "kind": "error",
+                            "count": 40
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-25",
+                            "kind": "error",
+                            "count": 20
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-24",
+                    "totalRequests": 1150,
+                    "requests2xx": 1090,
+                    "requests4xx": 40,
+                    "requests5xx": 20,
+                    "totalCost": 0.23,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.2,
+                            "date": "2025-10-24",
+                            "kind": "request",
+                            "count": 1090
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.02,
+                            "date": "2025-10-24",
+                            "kind": "error",
+                            "count": 40
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-24",
+                            "kind": "error",
+                            "count": 20
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-23",
+                    "totalRequests": 1400,
+                    "requests2xx": 1330,
+                    "requests4xx": 50,
+                    "requests5xx": 20,
+                    "totalCost": 0.29,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.26,
+                            "date": "2025-10-23",
+                            "kind": "request",
+                            "count": 1330
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.02,
+                            "date": "2025-10-23",
+                            "kind": "error",
+                            "count": 50
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-23",
+                            "kind": "error",
+                            "count": 20
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-22",
+                    "totalRequests": 1050,
+                    "requests2xx": 1000,
+                    "requests4xx": 30,
+                    "requests5xx": 20,
+                    "totalCost": 0.21,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.19,
+                            "date": "2025-10-22",
+                            "kind": "request",
+                            "count": 1000
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-10-22",
+                            "kind": "error",
+                            "count": 30
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-22",
+                            "kind": "error",
+                            "count": 20
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-21",
+                    "totalRequests": 1280,
+                    "requests2xx": 1220,
+                    "requests4xx": 35,
+                    "requests5xx": 25,
+                    "totalCost": 0.26,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.23,
+                            "date": "2025-10-21",
+                            "kind": "request",
+                            "count": 1220
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.02,
+                            "date": "2025-10-21",
+                            "kind": "error",
+                            "count": 35
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-21",
+                            "kind": "error",
+                            "count": 25
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-20",
+                    "totalRequests": 1100,
+                    "requests2xx": 1050,
+                    "requests4xx": 30,
+                    "requests5xx": 20,
+                    "totalCost": 0.22,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.2,
+                            "date": "2025-10-20",
+                            "kind": "request",
+                            "count": 1050
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-10-20",
+                            "kind": "error",
+                            "count": 30
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-20",
+                            "kind": "error",
+                            "count": 20
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-19",
+                    "totalRequests": 1350,
+                    "requests2xx": 1280,
+                    "requests4xx": 45,
+                    "requests5xx": 25,
+                    "totalCost": 0.28,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.25,
+                            "date": "2025-10-19",
+                            "kind": "request",
+                            "count": 1280
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.02,
+                            "date": "2025-10-19",
+                            "kind": "error",
+                            "count": 45
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-19",
+                            "kind": "error",
+                            "count": 25
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-18",
+                    "totalRequests": 1200,
+                    "requests2xx": 1140,
+                    "requests4xx": 40,
+                    "requests5xx": 20,
+                    "totalCost": 0.24,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.21,
+                            "date": "2025-10-18",
+                            "kind": "request",
+                            "count": 1140
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.02,
+                            "date": "2025-10-18",
+                            "kind": "error",
+                            "count": 40
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-18",
+                            "kind": "error",
+                            "count": 20
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-17",
+                    "totalRequests": 1450,
+                    "requests2xx": 1380,
+                    "requests4xx": 45,
+                    "requests5xx": 25,
+                    "totalCost": 0.29,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.26,
+                            "date": "2025-10-17",
+                            "kind": "request",
+                            "count": 1380
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.02,
+                            "date": "2025-10-17",
+                            "kind": "error",
+                            "count": 45
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-17",
+                            "kind": "error",
+                            "count": 25
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-16",
+                    "totalRequests": 1100,
+                    "requests2xx": 1050,
+                    "requests4xx": 30,
+                    "requests5xx": 20,
+                    "totalCost": 0.22,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.2,
+                            "date": "2025-10-16",
+                            "kind": "request",
+                            "count": 1050
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-10-16",
+                            "kind": "error",
+                            "count": 30
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-16",
+                            "kind": "error",
+                            "count": 20
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-15",
+                    "totalRequests": 1300,
+                    "requests2xx": 1240,
+                    "requests4xx": 40,
+                    "requests5xx": 20,
+                    "totalCost": 0.27,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.24,
+                            "date": "2025-10-15",
+                            "kind": "request",
+                            "count": 1240
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.02,
+                            "date": "2025-10-15",
+                            "kind": "error",
+                            "count": 40
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-15",
+                            "kind": "error",
+                            "count": 20
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-14",
+                    "totalRequests": 1050,
+                    "requests2xx": 1000,
+                    "requests4xx": 30,
+                    "requests5xx": 20,
+                    "totalCost": 0.21,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.19,
+                            "date": "2025-10-14",
+                            "kind": "request",
+                            "count": 1000
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-10-14",
+                            "kind": "error",
+                            "count": 30
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-14",
+                            "kind": "error",
+                            "count": 20
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-13",
+                    "totalRequests": 1250,
+                    "requests2xx": 1180,
+                    "requests4xx": 50,
+                    "requests5xx": 20,
+                    "totalCost": 0.25,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.22,
+                            "date": "2025-10-13",
+                            "kind": "request",
+                            "count": 1180
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.02,
+                            "date": "2025-10-13",
+                            "kind": "error",
+                            "count": 50
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-13",
+                            "kind": "error",
+                            "count": 20
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-12",
+                    "totalRequests": 1400,
+                    "requests2xx": 1330,
+                    "requests4xx": 50,
+                    "requests5xx": 20,
+                    "totalCost": 0.29,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.26,
+                            "date": "2025-10-12",
+                            "kind": "request",
+                            "count": 1330
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.02,
+                            "date": "2025-10-12",
+                            "kind": "error",
+                            "count": 50
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-12",
+                            "kind": "error",
+                            "count": 20
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-11",
+                    "totalRequests": 1150,
+                    "requests2xx": 1090,
+                    "requests4xx": 40,
+                    "requests5xx": 20,
+                    "totalCost": 0.23,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.2,
+                            "date": "2025-10-11",
+                            "kind": "request",
+                            "count": 1090
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.02,
+                            "date": "2025-10-11",
+                            "kind": "error",
+                            "count": 40
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-11",
+                            "kind": "error",
+                            "count": 20
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-10",
+                    "totalRequests": 1280,
+                    "requests2xx": 1220,
+                    "requests4xx": 35,
+                    "requests5xx": 25,
+                    "totalCost": 0.26,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.23,
+                            "date": "2025-10-10",
+                            "kind": "request",
+                            "count": 1220
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.02,
+                            "date": "2025-10-10",
+                            "kind": "error",
+                            "count": 35
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-10",
+                            "kind": "error",
+                            "count": 25
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-09",
+                    "totalRequests": 1100,
+                    "requests2xx": 1050,
+                    "requests4xx": 30,
+                    "requests5xx": 20,
+                    "totalCost": 0.22,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.2,
+                            "date": "2025-10-09",
+                            "kind": "request",
+                            "count": 1050
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-10-09",
+                            "kind": "error",
+                            "count": 30
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-09",
+                            "kind": "error",
+                            "count": 20
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-08",
+                    "totalRequests": 1350,
+                    "requests2xx": 1280,
+                    "requests4xx": 45,
+                    "requests5xx": 25,
+                    "totalCost": 0.28,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.25,
+                            "date": "2025-10-08",
+                            "kind": "request",
+                            "count": 1280
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.02,
+                            "date": "2025-10-08",
+                            "kind": "error",
+                            "count": 45
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-08",
+                            "kind": "error",
+                            "count": 25
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-07",
+                    "totalRequests": 1200,
+                    "requests2xx": 1140,
+                    "requests4xx": 40,
+                    "requests5xx": 20,
+                    "totalCost": 0.24,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.21,
+                            "date": "2025-10-07",
+                            "kind": "request",
+                            "count": 1140
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.02,
+                            "date": "2025-10-07",
+                            "kind": "error",
+                            "count": 40
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-07",
+                            "kind": "error",
+                            "count": 20
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-06",
+                    "totalRequests": 1450,
+                    "requests2xx": 1380,
+                    "requests4xx": 45,
+                    "requests5xx": 25,
+                    "totalCost": 0.29,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.26,
+                            "date": "2025-10-06",
+                            "kind": "request",
+                            "count": 1380
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.02,
+                            "date": "2025-10-06",
+                            "kind": "error",
+                            "count": 45
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-06",
+                            "kind": "error",
+                            "count": 25
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-09-30",
+                    "totalRequests": 1100,
+                    "requests2xx": 1050,
+                    "requests4xx": 30,
+                    "requests5xx": 20,
+                    "totalCost": 0.22,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.2,
+                            "date": "2025-09-30",
+                            "kind": "request",
+                            "count": 1050
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-09-30",
+                            "kind": "error",
+                            "count": 30
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-09-30",
+                            "kind": "error",
+                            "count": 20
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-09-25",
+                    "totalRequests": 1300,
+                    "requests2xx": 1240,
+                    "requests4xx": 40,
+                    "requests5xx": 20,
+                    "totalCost": 0.27,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.24,
+                            "date": "2025-09-25",
+                            "kind": "request",
+                            "count": 1240
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.02,
+                            "date": "2025-09-25",
+                            "kind": "error",
+                            "count": 40
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-09-25",
+                            "kind": "error",
+                            "count": 20
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-09-20",
+                    "totalRequests": 1200,
+                    "requests2xx": 1140,
+                    "requests4xx": 40,
+                    "requests5xx": 20,
+                    "totalCost": 0.24,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.21,
+                            "date": "2025-09-20",
+                            "kind": "request",
+                            "count": 1140
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.02,
+                            "date": "2025-09-20",
+                            "kind": "error",
+                            "count": 40
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-09-20",
+                            "kind": "error",
+                            "count": 20
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-09-15",
+                    "totalRequests": 1150,
+                    "requests2xx": 1090,
+                    "requests4xx": 40,
+                    "requests5xx": 20,
+                    "totalCost": 0.23,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.2,
+                            "date": "2025-09-15",
+                            "kind": "request",
+                            "count": 1090
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.02,
+                            "date": "2025-09-15",
+                            "kind": "error",
+                            "count": 40
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-09-15",
+                            "kind": "error",
+                            "count": 20
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-09-10",
+                    "totalRequests": 1250,
+                    "requests2xx": 1180,
+                    "requests4xx": 50,
+                    "requests5xx": 20,
+                    "totalCost": 0.25,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.22,
+                            "date": "2025-09-10",
+                            "kind": "request",
+                            "count": 1180
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.02,
+                            "date": "2025-09-10",
+                            "kind": "error",
+                            "count": 50
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-09-10",
+                            "kind": "error",
+                            "count": 20
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-09-05",
+                    "totalRequests": 1100,
+                    "requests2xx": 1050,
+                    "requests4xx": 30,
+                    "requests5xx": 20,
+                    "totalCost": 0.22,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.2,
+                            "date": "2025-09-05",
+                            "kind": "request",
+                            "count": 1050
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-09-05",
+                            "kind": "error",
+                            "count": 30
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-09-05",
+                            "kind": "error",
+                            "count": 20
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-08-30",
+                    "totalRequests": 1350,
+                    "requests2xx": 1280,
+                    "requests4xx": 45,
+                    "requests5xx": 25,
+                    "totalCost": 0.28,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.25,
+                            "date": "2025-08-30",
+                            "kind": "request",
+                            "count": 1280
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.02,
+                            "date": "2025-08-30",
+                            "kind": "error",
+                            "count": 45
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-08-30",
+                            "kind": "error",
+                            "count": 25
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-08-25",
+                    "totalRequests": 1400,
+                    "requests2xx": 1330,
+                    "requests4xx": 50,
+                    "requests5xx": 20,
+                    "totalCost": 0.29,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.26,
+                            "date": "2025-08-25",
+                            "kind": "request",
+                            "count": 1330
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.02,
+                            "date": "2025-08-25",
+                            "kind": "error",
+                            "count": 50
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-08-25",
+                            "kind": "error",
+                            "count": 20
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-08-20",
+                    "totalRequests": 1200,
+                    "requests2xx": 1140,
+                    "requests4xx": 40,
+                    "requests5xx": 20,
+                    "totalCost": 0.24,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.21,
+                            "date": "2025-08-20",
+                            "kind": "request",
+                            "count": 1140
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.02,
+                            "date": "2025-08-20",
+                            "kind": "error",
+                            "count": 40
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-08-20",
+                            "kind": "error",
+                            "count": 20
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-08-15",
+                    "totalRequests": 1280,
+                    "requests2xx": 1220,
+                    "requests4xx": 35,
+                    "requests5xx": 25,
+                    "totalCost": 0.26,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.23,
+                            "date": "2025-08-15",
+                            "kind": "request",
+                            "count": 1220
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.02,
+                            "date": "2025-08-15",
+                            "kind": "error",
+                            "count": 35
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-08-15",
+                            "kind": "error",
+                            "count": 25
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-08-10",
+                    "totalRequests": 1150,
+                    "requests2xx": 1090,
+                    "requests4xx": 40,
+                    "requests5xx": 20,
+                    "totalCost": 0.23,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.2,
+                            "date": "2025-08-10",
+                            "kind": "request",
+                            "count": 1090
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.02,
+                            "date": "2025-08-10",
+                            "kind": "error",
+                            "count": 40
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-08-10",
+                            "kind": "error",
+                            "count": 20
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-08-06",
+                    "totalRequests": 1100,
+                    "requests2xx": 1050,
+                    "requests4xx": 30,
+                    "requests5xx": 20,
+                    "totalCost": 0.22,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.2,
+                            "date": "2025-08-06",
+                            "kind": "request",
+                            "count": 1050
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-08-06",
+                            "kind": "error",
+                            "count": 30
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-08-06",
+                            "kind": "error",
+                            "count": 20
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "keyId": "key-2",
+            "userId": "guest-123",
+            "dailyUsage": [
+                {
+                    "date": "2025-11-04",
+                    "totalRequests": 550,
+                    "requests2xx": 520,
+                    "requests4xx": 20,
+                    "requests5xx": 10,
+                    "totalCost": 0.11,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.09,
+                            "date": "2025-11-04",
+                            "kind": "request",
+                            "count": 520
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-11-04",
+                            "kind": "error",
+                            "count": 20
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-11-04",
+                            "kind": "error",
+                            "count": 10
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-11-03",
+                    "totalRequests": 0,
+                    "requests2xx": 0,
+                    "requests4xx": 0,
+                    "requests5xx": 0,
+                    "totalCost": 0,
+                    "events": []
+                },
+                {
+                    "date": "2025-11-02",
+                    "totalRequests": 680,
+                    "requests2xx": 650,
+                    "requests4xx": 20,
+                    "requests5xx": 10,
+                    "totalCost": 0.13,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.11,
+                            "date": "2025-11-02",
+                            "kind": "request",
+                            "count": 650
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-11-02",
+                            "kind": "error",
+                            "count": 20
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-11-02",
+                            "kind": "error",
+                            "count": 10
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-11-01",
+                    "totalRequests": 420,
+                    "requests2xx": 400,
+                    "requests4xx": 15,
+                    "requests5xx": 5,
+                    "totalCost": 0.08,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.07,
+                            "date": "2025-11-01",
+                            "kind": "request",
+                            "count": 400
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-11-01",
+                            "kind": "error",
+                            "count": 15
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0,
+                            "date": "2025-11-01",
+                            "kind": "error",
+                            "count": 5
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-31",
+                    "totalRequests": 0,
+                    "requests2xx": 0,
+                    "requests4xx": 0,
+                    "requests5xx": 0,
+                    "totalCost": 0,
+                    "events": []
+                },
+                {
+                    "date": "2025-10-30",
+                    "totalRequests": 590,
+                    "requests2xx": 560,
+                    "requests4xx": 20,
+                    "requests5xx": 10,
+                    "totalCost": 0.12,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.1,
+                            "date": "2025-10-30",
+                            "kind": "request",
+                            "count": 560
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-10-30",
+                            "kind": "error",
+                            "count": 20
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-30",
+                            "kind": "error",
+                            "count": 10
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-29",
+                    "totalRequests": 480,
+                    "requests2xx": 460,
+                    "requests4xx": 15,
+                    "requests5xx": 5,
+                    "totalCost": 0.09,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.08,
+                            "date": "2025-10-29",
+                            "kind": "request",
+                            "count": 460
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-10-29",
+                            "kind": "error",
+                            "count": 15
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0,
+                            "date": "2025-10-29",
+                            "kind": "error",
+                            "count": 5
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-28",
+                    "totalRequests": 620,
+                    "requests2xx": 590,
+                    "requests4xx": 20,
+                    "requests5xx": 10,
+                    "totalCost": 0.12,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.1,
+                            "date": "2025-10-28",
+                            "kind": "request",
+                            "count": 590
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-10-28",
+                            "kind": "error",
+                            "count": 20
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-28",
+                            "kind": "error",
+                            "count": 10
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-27",
+                    "totalRequests": 0,
+                    "requests2xx": 0,
+                    "requests4xx": 0,
+                    "requests5xx": 0,
+                    "totalCost": 0,
+                    "events": []
+                },
+                {
+                    "date": "2025-10-26",
+                    "totalRequests": 540,
+                    "requests2xx": 510,
+                    "requests4xx": 20,
+                    "requests5xx": 10,
+                    "totalCost": 0.11,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.09,
+                            "date": "2025-10-26",
+                            "kind": "request",
+                            "count": 510
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-10-26",
+                            "kind": "error",
+                            "count": 20
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-26",
+                            "kind": "error",
+                            "count": 10
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-25",
+                    "totalRequests": 600,
+                    "requests2xx": 570,
+                    "requests4xx": 20,
+                    "requests5xx": 10,
+                    "totalCost": 0.12,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.1,
+                            "date": "2025-10-25",
+                            "kind": "request",
+                            "count": 570
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-10-25",
+                            "kind": "error",
+                            "count": 20
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-25",
+                            "kind": "error",
+                            "count": 10
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-20",
+                    "totalRequests": 520,
+                    "requests2xx": 490,
+                    "requests4xx": 20,
+                    "requests5xx": 10,
+                    "totalCost": 0.1,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.08,
+                            "date": "2025-10-20",
+                            "kind": "request",
+                            "count": 490
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-10-20",
+                            "kind": "error",
+                            "count": 20
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-20",
+                            "kind": "error",
+                            "count": 10
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-15",
+                    "totalRequests": 580,
+                    "requests2xx": 550,
+                    "requests4xx": 20,
+                    "requests5xx": 10,
+                    "totalCost": 0.11,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.09,
+                            "date": "2025-10-15",
+                            "kind": "request",
+                            "count": 550
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-10-15",
+                            "kind": "error",
+                            "count": 20
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-10-15",
+                            "kind": "error",
+                            "count": 10
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-10",
+                    "totalRequests": 0,
+                    "requests2xx": 0,
+                    "requests4xx": 0,
+                    "requests5xx": 0,
+                    "totalCost": 0,
+                    "events": []
+                },
+                {
+                    "date": "2025-10-05",
+                    "totalRequests": 450,
+                    "requests2xx": 430,
+                    "requests4xx": 15,
+                    "requests5xx": 5,
+                    "totalCost": 0.09,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.08,
+                            "date": "2025-10-05",
+                            "kind": "request",
+                            "count": 430
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-10-05",
+                            "kind": "error",
+                            "count": 15
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0,
+                            "date": "2025-10-05",
+                            "kind": "error",
+                            "count": 5
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-09-30",
+                    "totalRequests": 510,
+                    "requests2xx": 480,
+                    "requests4xx": 20,
+                    "requests5xx": 10,
+                    "totalCost": 0.1,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.08,
+                            "date": "2025-09-30",
+                            "kind": "request",
+                            "count": 480
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-09-30",
+                            "kind": "error",
+                            "count": 20
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-09-30",
+                            "kind": "error",
+                            "count": 10
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-09-25",
+                    "totalRequests": 0,
+                    "requests2xx": 0,
+                    "requests4xx": 0,
+                    "requests5xx": 0,
+                    "totalCost": 0,
+                    "events": []
+                },
+                {
+                    "date": "2025-09-20",
+                    "totalRequests": 560,
+                    "requests2xx": 530,
+                    "requests4xx": 20,
+                    "requests5xx": 10,
+                    "totalCost": 0.11,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.09,
+                            "date": "2025-09-20",
+                            "kind": "request",
+                            "count": 530
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-09-20",
+                            "kind": "error",
+                            "count": 20
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-09-20",
+                            "kind": "error",
+                            "count": 10
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-09-15",
+                    "totalRequests": 490,
+                    "requests2xx": 460,
+                    "requests4xx": 20,
+                    "requests5xx": 10,
+                    "totalCost": 0.1,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.08,
+                            "date": "2025-09-15",
+                            "kind": "request",
+                            "count": 460
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-09-15",
+                            "kind": "error",
+                            "count": 20
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-09-15",
+                            "kind": "error",
+                            "count": 10
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-09-10",
+                    "totalRequests": 0,
+                    "requests2xx": 0,
+                    "requests4xx": 0,
+                    "requests5xx": 0,
+                    "totalCost": 0,
+                    "events": []
+                },
+                {
+                    "date": "2025-09-05",
+                    "totalRequests": 530,
+                    "requests2xx": 500,
+                    "requests4xx": 20,
+                    "requests5xx": 10,
+                    "totalCost": 0.11,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.09,
+                            "date": "2025-09-05",
+                            "kind": "request",
+                            "count": 500
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-09-05",
+                            "kind": "error",
+                            "count": 20
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-09-05",
+                            "kind": "error",
+                            "count": 10
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-08-30",
+                    "totalRequests": 0,
+                    "requests2xx": 0,
+                    "requests4xx": 0,
+                    "requests5xx": 0,
+                    "totalCost": 0,
+                    "events": []
+                },
+                {
+                    "date": "2025-08-25",
+                    "totalRequests": 580,
+                    "requests2xx": 550,
+                    "requests4xx": 20,
+                    "requests5xx": 10,
+                    "totalCost": 0.11,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.09,
+                            "date": "2025-08-25",
+                            "kind": "request",
+                            "count": 550
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-08-25",
+                            "kind": "error",
+                            "count": 20
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-08-25",
+                            "kind": "error",
+                            "count": 10
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-08-20",
+                    "totalRequests": 450,
+                    "requests2xx": 430,
+                    "requests4xx": 15,
+                    "requests5xx": 5,
+                    "totalCost": 0.09,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.08,
+                            "date": "2025-08-20",
+                            "kind": "request",
+                            "count": 430
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-08-20",
+                            "kind": "error",
+                            "count": 15
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0,
+                            "date": "2025-08-20",
+                            "kind": "error",
+                            "count": 5
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-08-15",
+                    "totalRequests": 0,
+                    "requests2xx": 0,
+                    "requests4xx": 0,
+                    "requests5xx": 0,
+                    "totalCost": 0,
+                    "events": []
+                },
+                {
+                    "date": "2025-08-10",
+                    "totalRequests": 520,
+                    "requests2xx": 490,
+                    "requests4xx": 20,
+                    "requests5xx": 10,
+                    "totalCost": 0.1,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.08,
+                            "date": "2025-08-10",
+                            "kind": "request",
+                            "count": 490
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-08-10",
+                            "kind": "error",
+                            "count": 20
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-08-10",
+                            "kind": "error",
+                            "count": 10
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-08-06",
+                    "totalRequests": 490,
+                    "requests2xx": 460,
+                    "requests4xx": 20,
+                    "requests5xx": 10,
+                    "totalCost": 0.1,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.08,
+                            "date": "2025-08-06",
+                            "kind": "request",
+                            "count": 460
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-08-06",
+                            "kind": "error",
+                            "count": 20
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0.01,
+                            "date": "2025-08-06",
+                            "kind": "error",
+                            "count": 10
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "keyId": "key-3",
+            "userId": "guest-123",
+            "dailyUsage": [
+                {
+                    "date": "2025-11-04",
+                    "totalRequests": 150,
+                    "requests2xx": 130,
+                    "requests4xx": 15,
+                    "requests5xx": 5,
+                    "totalCost": 0.03,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.02,
+                            "date": "2025-11-04",
+                            "kind": "request",
+                            "count": 130
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-11-04",
+                            "kind": "error",
+                            "count": 15
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0,
+                            "date": "2025-11-04",
+                            "kind": "error",
+                            "count": 5
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-11-02",
+                    "totalRequests": 0,
+                    "requests2xx": 0,
+                    "requests4xx": 0,
+                    "requests5xx": 0,
+                    "totalCost": 0,
+                    "events": []
+                },
+                {
+                    "date": "2025-10-30",
+                    "totalRequests": 180,
+                    "requests2xx": 160,
+                    "requests4xx": 15,
+                    "requests5xx": 5,
+                    "totalCost": 0.04,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.03,
+                            "date": "2025-10-30",
+                            "kind": "request",
+                            "count": 160
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-10-30",
+                            "kind": "error",
+                            "count": 15
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0,
+                            "date": "2025-10-30",
+                            "kind": "error",
+                            "count": 5
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-25",
+                    "totalRequests": 0,
+                    "requests2xx": 0,
+                    "requests4xx": 0,
+                    "requests5xx": 0,
+                    "totalCost": 0,
+                    "events": []
+                },
+                {
+                    "date": "2025-10-20",
+                    "totalRequests": 120,
+                    "requests2xx": 105,
+                    "requests4xx": 10,
+                    "requests5xx": 5,
+                    "totalCost": 0.02,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.02,
+                            "date": "2025-10-20",
+                            "kind": "request",
+                            "count": 105
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0,
+                            "date": "2025-10-20",
+                            "kind": "error",
+                            "count": 10
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0,
+                            "date": "2025-10-20",
+                            "kind": "error",
+                            "count": 5
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-15",
+                    "totalRequests": 0,
+                    "requests2xx": 0,
+                    "requests4xx": 0,
+                    "requests5xx": 0,
+                    "totalCost": 0,
+                    "events": []
+                },
+                {
+                    "date": "2025-10-10",
+                    "totalRequests": 200,
+                    "requests2xx": 180,
+                    "requests4xx": 15,
+                    "requests5xx": 5,
+                    "totalCost": 0.04,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.03,
+                            "date": "2025-10-10",
+                            "kind": "request",
+                            "count": 180
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-10-10",
+                            "kind": "error",
+                            "count": 15
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0,
+                            "date": "2025-10-10",
+                            "kind": "error",
+                            "count": 5
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-10-05",
+                    "totalRequests": 0,
+                    "requests2xx": 0,
+                    "requests4xx": 0,
+                    "requests5xx": 0,
+                    "totalCost": 0,
+                    "events": []
+                },
+                {
+                    "date": "2025-09-30",
+                    "totalRequests": 140,
+                    "requests2xx": 120,
+                    "requests4xx": 15,
+                    "requests5xx": 5,
+                    "totalCost": 0.03,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.02,
+                            "date": "2025-09-30",
+                            "kind": "request",
+                            "count": 120
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-09-30",
+                            "kind": "error",
+                            "count": 15
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0,
+                            "date": "2025-09-30",
+                            "kind": "error",
+                            "count": 5
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-09-25",
+                    "totalRequests": 0,
+                    "requests2xx": 0,
+                    "requests4xx": 0,
+                    "requests5xx": 0,
+                    "totalCost": 0,
+                    "events": []
+                },
+                {
+                    "date": "2025-09-20",
+                    "totalRequests": 160,
+                    "requests2xx": 140,
+                    "requests4xx": 15,
+                    "requests5xx": 5,
+                    "totalCost": 0.03,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.02,
+                            "date": "2025-09-20",
+                            "kind": "request",
+                            "count": 140
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-09-20",
+                            "kind": "error",
+                            "count": 15
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0,
+                            "date": "2025-09-20",
+                            "kind": "error",
+                            "count": 5
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-09-10",
+                    "totalRequests": 0,
+                    "requests2xx": 0,
+                    "requests4xx": 0,
+                    "requests5xx": 0,
+                    "totalCost": 0,
+                    "events": []
+                },
+                {
+                    "date": "2025-09-05",
+                    "totalRequests": 130,
+                    "requests2xx": 115,
+                    "requests4xx": 10,
+                    "requests5xx": 5,
+                    "totalCost": 0.03,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.02,
+                            "date": "2025-09-05",
+                            "kind": "request",
+                            "count": 115
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-09-05",
+                            "kind": "error",
+                            "count": 10
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0,
+                            "date": "2025-09-05",
+                            "kind": "error",
+                            "count": 5
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-08-28",
+                    "totalRequests": 0,
+                    "requests2xx": 0,
+                    "requests4xx": 0,
+                    "requests5xx": 0,
+                    "totalCost": 0,
+                    "events": []
+                },
+                {
+                    "date": "2025-08-20",
+                    "totalRequests": 170,
+                    "requests2xx": 150,
+                    "requests4xx": 15,
+                    "requests5xx": 5,
+                    "totalCost": 0.03,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.02,
+                            "date": "2025-08-20",
+                            "kind": "request",
+                            "count": 150
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0.01,
+                            "date": "2025-08-20",
+                            "kind": "error",
+                            "count": 15
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0,
+                            "date": "2025-08-20",
+                            "kind": "error",
+                            "count": 5
+                        }
+                    ]
+                },
+                {
+                    "date": "2025-08-10",
+                    "totalRequests": 0,
+                    "requests2xx": 0,
+                    "requests4xx": 0,
+                    "requests5xx": 0,
+                    "totalCost": 0,
+                    "events": []
+                },
+                {
+                    "date": "2025-08-06",
+                    "totalRequests": 110,
+                    "requests2xx": 100,
+                    "requests4xx": 8,
+                    "requests5xx": 2,
+                    "totalCost": 0.02,
+                    "events": [
+                        {
+                            "type": "2xx",
+                            "cost": 0.02,
+                            "date": "2025-08-06",
+                            "kind": "request",
+                            "count": 100
+                        },
+                        {
+                            "type": "4xx",
+                            "cost": 0,
+                            "date": "2025-08-06",
+                            "kind": "error",
+                            "count": 8
+                        },
+                        {
+                            "type": "5xx",
+                            "cost": 0,
+                            "date": "2025-08-06",
+                            "kind": "error",
+                            "count": 2
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
