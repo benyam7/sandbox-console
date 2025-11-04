@@ -3,7 +3,11 @@ import { useAuth } from '@/contexts/auth-context';
 import { LayoutDashboard, LogOut, Key, ChartLine, Book } from 'lucide-react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 
-export default function Sidebar() {
+interface SidebarProps {
+    onNavigate?: () => void;
+}
+
+export default function Sidebar({ onNavigate }: SidebarProps) {
     const { user, logout } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
@@ -15,9 +19,14 @@ export default function Sidebar() {
         if (href !== '/' && location.pathname.startsWith(href)) return true;
         return false;
     };
+    const handleLinkClick = () => {
+        if (onNavigate) {
+            onNavigate();
+        }
+    };
 
     return (
-        <aside className="w-64 border-r border-border bg-sidebar flex flex-col">
+        <aside className="w-64 border-r border-border bg-sidebar flex flex-col h-full">
             {/* Logo */}
             <div className="p-6 border-b border-sidebar-border">
                 <h1 className="text-xl font-bold text-sidebar-foreground">
@@ -45,7 +54,11 @@ export default function Sidebar() {
 
             {/* Navigation */}
             <nav className="flex-1 p-4 space-y-2">
-                <Link to="/dashboard" className="block">
+                <Link
+                    to="/dashboard"
+                    className="block"
+                    onClick={handleLinkClick}
+                >
                     <Button
                         variant="ghost"
                         className={`w-full justify-start text-sidebar-foreground ${
@@ -59,7 +72,11 @@ export default function Sidebar() {
                     </Button>
                 </Link>
 
-                <Link to="/api-keys" className="block">
+                <Link
+                    to="/api-keys"
+                    className="block"
+                    onClick={handleLinkClick}
+                >
                     <Button
                         variant="ghost"
                         className={`w-full justify-start text-sidebar-foreground ${
@@ -73,7 +90,7 @@ export default function Sidebar() {
                     </Button>
                 </Link>
 
-                <Link to="/usage" className="block">
+                <Link to="/usage" className="block" onClick={handleLinkClick}>
                     <Button
                         variant="ghost"
                         className={`w-full justify-start text-sidebar-foreground ${
@@ -87,7 +104,7 @@ export default function Sidebar() {
                     </Button>
                 </Link>
 
-                <Link to="/docs" className="block">
+                <Link to="/docs" className="block" onClick={handleLinkClick}>
                     <Button
                         variant="ghost"
                         className={`w-full justify-start text-sidebar-foreground ${
