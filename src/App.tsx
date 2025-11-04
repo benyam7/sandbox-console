@@ -7,35 +7,40 @@ import SignIn from './pages/sign-in';
 import MainLayout from './components/layout/main-layout';
 import ProtectedRoute from './components/auth/protected-route';
 import { AuthProvider } from './contexts/auth-context';
-
+import { ThemeProvider } from './components/theme/theme-provider';
 function App() {
     return (
-        <AuthProvider>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={
-                        <ProtectedRoute>
-                            <MainLayout />
-                        </ProtectedRoute>
-                    }>
-                        <Route path="dashboard" element={<Dashboard />} />
-                        <Route path="api-keys" element={<ApiKeys />} />
-                        <Route path="usage" element={<Usage />} />
-                        <Route path="docs" element={<Docs />} />
-                    </Route>
+        <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
+            <AuthProvider>
+                <BrowserRouter>
+                    <Routes>
+                        <Route
+                            path="/"
+                            element={
+                                <ProtectedRoute>
+                                    <MainLayout />
+                                </ProtectedRoute>
+                            }
+                        >
+                            <Route path="dashboard" element={<Dashboard />} />
+                            <Route path="api-keys" element={<ApiKeys />} />
+                            <Route path="usage" element={<Usage />} />
+                            <Route path="docs" element={<Docs />} />
+                        </Route>
 
-                    <Route path="sign-in" element={<SignIn />} />
-                    <Route
-                        path="*"
-                        element={
-                            <div className="text-center text-2xl font-bold flex items-center justify-center h-screen">
-                                404 Not Found
-                            </div>
-                        }
-                    />
-                </Routes>
-            </BrowserRouter>
-        </AuthProvider>
+                        <Route path="sign-in" element={<SignIn />} />
+                        <Route
+                            path="*"
+                            element={
+                                <div className="text-center text-2xl font-bold flex items-center justify-center h-screen">
+                                    404 Not Found
+                                </div>
+                            }
+                        />
+                    </Routes>
+                </BrowserRouter>
+            </AuthProvider>
+        </ThemeProvider>
     );
 }
 

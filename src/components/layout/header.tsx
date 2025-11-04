@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Menu } from 'lucide-react';
+import { ModeToggle } from '@/components/theme/mode-toggle';
 
 export default function Header() {
     return (
@@ -13,9 +14,7 @@ export default function Header() {
                 </div>
 
                 <div className="flex items-center gap-2">
-                    <Button variant="outline" size="sm">
-                        Settings
-                    </Button>
+                    <ModeToggle />
                 </div>
             </div>
         </header>
