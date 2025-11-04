@@ -29,19 +29,59 @@ import {
     ALL_REQUEST_TYPES,
 } from '@/lib/request-type-config';
 import { RequestTypeSelector } from './request-type-selector';
+import { ApiKeySelector } from './api-key-selector';
 
 interface UsageTableProps {
     events: UsageEvent[];
+    apiKeys: Array<{ id: string; name: string }>;
+    userId: string;
 }
 
-export function UsageTable({ events }: UsageTableProps) {
+export function UsageTable({ events, apiKeys, userId }: UsageTableProps) {
     const [selectedTypes, setSelectedTypes] =
         React.useState<RequestType[]>(ALL_REQUEST_TYPES);
     const [timeRange, setTimeRange] = React.useState('90d');
+    const [selectedKeys, setSelectedKeys] = React.useState<string[]>(
+        apiKeys.map((k) => k.id)
+    );
+    const [filteredEvents, setFilteredEvents] =
+        React.useState<UsageEvent[]>(events);
+
+    // Update selectedKeys when apiKeys change
+    React.useEffect(() => {
+        setSelectedKeys(apiKeys.map((k) => k.id));
+    }, [apiKeys]);
+
+    // Fetch filtered data when keys change
+    React.useEffect(() => {
+        const fetchFilteredData = async () => {
+            if (!userId || selectedKeys.length === 0) return;
+
+            const allKeyIds = apiKeys.map((k) => k.id);
+            const isAllSelected =
+                selectedKeys.length === allKeyIds.length &&
+                selectedKeys.every((id) => allKeyIds.includes(id));
+
+            if (isAllSelected) {
+                // Use all data
+                const allEvents = await UsageService.getAllEvents(userId);
+                setFilteredEvents(allEvents);
+            } else {
+                // Filter by selected keys
+                const filtered = await UsageService.getEventsByKeys(
+                    userId,
+                    selectedKeys
+                );
+                setFilteredEvents(filtered);
+            }
+        };
+
+        fetchFilteredData();
+    }, [selectedKeys, userId, apiKeys]);
 
     // Filter events based on time range
     const timeFilteredEvents = React.useMemo(() => {
-        if (events.length === 0) return [];
+        if (filteredEvents.length === 0) return [];
 
         const now = new Date();
         let daysToShow = 90;
@@ -55,14 +95,14 @@ export function UsageTable({ events }: UsageTableProps) {
         const cutoffDate = new Date(now);
         cutoffDate.setDate(cutoffDate.getDate() - daysToShow);
 
-        return events.filter((event) => {
+        return filteredEvents.filter((event) => {
             const eventDate = new Date(event.date);
             return eventDate >= cutoffDate;
         });
-    }, [events, timeRange]);
+    }, [filteredEvents, timeRange]);
 
     // Filter events based on selected types
-    const filteredEvents = UsageService.filterEventsByType(
+    const finalFilteredEvents = UsageService.filterEventsByType(
         timeFilteredEvents,
         selectedTypes
     );
@@ -84,6 +124,13 @@ export function UsageTable({ events }: UsageTableProps) {
                     </CardDescription>
                 </div>
                 <div className="flex items-center gap-2">
+                    {apiKeys.length > 0 && (
+                        <ApiKeySelector
+                            apiKeys={apiKeys}
+                            selectedKeys={selectedKeys}
+                            onSelectionChange={setSelectedKeys}
+                        />
+                    )}
                     <RequestTypeSelector
                         selectedTypes={selectedTypes}
                         onSelectionChange={setSelectedTypes}
@@ -121,18 +168,17 @@ export function UsageTable({ events }: UsageTableProps) {
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        {filteredEvents.length === 0 ? (
+                        {finalFilteredEvents.length === 0 ? (
                             <TableRow>
                                 <TableCell
                                     colSpan={5}
                                     className="text-center text-muted-foreground py-8"
                                 >
-                                    No usage events found for selected request
-                                    types
+                                    No usage events found for selected filters
                                 </TableCell>
                             </TableRow>
                         ) : (
-                            filteredEvents.map((event, index) => (
+                            finalFilteredEvents.map((event, index) => (
                                 <TableRow key={index}>
                                     <TableCell>
                                         {formatDate(event.date)}

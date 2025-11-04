@@ -28,19 +28,62 @@ import {
     ALL_REQUEST_TYPES,
 } from '@/lib/request-type-config';
 import { RequestTypeSelector } from './request-type-selector';
+import { ApiKeySelector } from './api-key-selector';
 
 interface UsageChartProps {
     dailyUsage: DailyUsage[];
+    apiKeys: Array<{ id: string; name: string }>;
+    userId: string;
 }
 
-export function UsageChart({ dailyUsage }: UsageChartProps) {
+export function UsageChart({ dailyUsage, apiKeys, userId }: UsageChartProps) {
     const [timeRange, setTimeRange] = React.useState('90d');
     const [selectedTypes, setSelectedTypes] =
         React.useState<RequestType[]>(ALL_REQUEST_TYPES);
+    const [selectedKeys, setSelectedKeys] = React.useState<string[]>(
+        apiKeys.map((k) => k.id)
+    );
+    const [filteredDailyUsage, setFilteredDailyUsage] =
+        React.useState<DailyUsage[]>(dailyUsage);
+
+    // Update selectedKeys when apiKeys change
+    React.useEffect(() => {
+        setSelectedKeys(apiKeys.map((k) => k.id));
+    }, [apiKeys]);
+
+    // Fetch filtered data when keys change
+    React.useEffect(() => {
+        const fetchFilteredData = async () => {
+            if (!userId || selectedKeys.length === 0) return;
+
+            const allKeyIds = apiKeys.map((k) => k.id);
+            const isAllSelected =
+                selectedKeys.length === allKeyIds.length &&
+                selectedKeys.every((id) => allKeyIds.includes(id));
+
+            if (isAllSelected) {
+                // Use all data
+                const aggregated = await UsageService.getAggregatedDailyUsage(
+                    userId
+                );
+                setFilteredDailyUsage(aggregated);
+            } else {
+                // Filter by selected keys
+                const filtered =
+                    await UsageService.getAggregatedDailyUsageByKeys(
+                        userId,
+                        selectedKeys
+                    );
+                setFilteredDailyUsage(filtered);
+            }
+        };
+
+        fetchFilteredData();
+    }, [selectedKeys, userId, apiKeys]);
 
     // Get the full chart data first
     const fullChartData = UsageService.formatForChart(
-        dailyUsage,
+        filteredDailyUsage,
         selectedTypes
     );
 
@@ -76,6 +119,13 @@ export function UsageChart({ dailyUsage }: UsageChartProps) {
                     </CardDescription>
                 </div>
                 <div className="flex items-center gap-2">
+                    {apiKeys.length > 0 && (
+                        <ApiKeySelector
+                            apiKeys={apiKeys}
+                            selectedKeys={selectedKeys}
+                            onSelectionChange={setSelectedKeys}
+                        />
+                    )}
                     <RequestTypeSelector
                         selectedTypes={selectedTypes}
                         onSelectionChange={setSelectedTypes}

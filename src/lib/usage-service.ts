@@ -135,6 +135,58 @@ export const UsageService = {
         }
     },
 
+    // Get aggregated daily usage for specific keys
+    async getAggregatedDailyUsageByKeys(
+        userId: string,
+        keyIds: string[]
+    ): Promise<DailyUsage[]> {
+        try {
+            const userUsageData = await this.getUsageByUserId(userId);
+
+            if (userUsageData.length === 0 || keyIds.length === 0) {
+                return [];
+            }
+
+            // Filter by selected keys
+            const filteredUsageData = userUsageData.filter((usage) =>
+                keyIds.includes(usage.keyId)
+            );
+
+            if (filteredUsageData.length === 0) {
+                return [];
+            }
+
+            // Aggregate daily usage data for selected keys
+            const dailyMap = new Map<string, DailyUsage>();
+
+            for (const keyUsage of filteredUsageData) {
+                for (const daily of keyUsage.dailyUsage) {
+                    const dateKey = daily.date.toISOString().split('T')[0];
+
+                    if (dailyMap.has(dateKey)) {
+                        const existing = dailyMap.get(dateKey)!;
+                        existing.totalRequests += daily.totalRequests;
+                        existing.requests2xx += daily.requests2xx;
+                        existing.requests4xx += daily.requests4xx;
+                        existing.requests5xx += daily.requests5xx;
+                        existing.totalCost += daily.totalCost;
+                        existing.events.push(...daily.events);
+                    } else {
+                        dailyMap.set(dateKey, { ...daily });
+                    }
+                }
+            }
+
+            // Sort by date descending
+            return Array.from(dailyMap.values()).sort(
+                (a, b) => b.date.getTime() - a.date.getTime()
+            );
+        } catch (error) {
+            console.error('Error aggregating daily usage by keys:', error);
+            return [];
+        }
+    },
+
     // Get all events for a user (flattened)
     async getAllEvents(userId: string): Promise<UsageEvent[]> {
         try {
@@ -153,6 +205,41 @@ export const UsageService = {
             );
         } catch (error) {
             console.error('Error getting all events:', error);
+            return [];
+        }
+    },
+
+    // Get events for specific keys
+    async getEventsByKeys(
+        userId: string,
+        keyIds: string[]
+    ): Promise<UsageEvent[]> {
+        try {
+            const userUsageData = await this.getUsageByUserId(userId);
+
+            if (keyIds.length === 0) {
+                return [];
+            }
+
+            // Filter by selected keys
+            const filteredUsageData = userUsageData.filter((usage) =>
+                keyIds.includes(usage.keyId)
+            );
+
+            const allEvents: UsageEvent[] = [];
+
+            for (const keyUsage of filteredUsageData) {
+                for (const daily of keyUsage.dailyUsage) {
+                    allEvents.push(...daily.events);
+                }
+            }
+
+            // Sort by date descending
+            return allEvents.sort(
+                (a, b) => b.date.getTime() - a.date.getTime()
+            );
+        } catch (error) {
+            console.error('Error getting events by keys:', error);
             return [];
         }
     },
