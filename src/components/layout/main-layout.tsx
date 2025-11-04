@@ -1,5 +1,3 @@
-'use client';
-
 import Header from './header';
 import { useIsMobile } from '@/hooks/use-mobile';
 import Sidebar from './sidebar';

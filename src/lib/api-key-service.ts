@@ -57,9 +57,8 @@ function maskAPIKey(key: string): string {
 
 // Generate a unique, cryptographically random API key
 function generateAPIKey(): string {
-    const timestamp = Date.now();
     const randomPart = CryptoJS.lib.WordArray.random(16).toString();
-    return `zama_key_${timestamp}_${randomPart}`;
+    return `zk_${randomPart}`;
 }
 
 // Service for managing API keys with encryption and type safety

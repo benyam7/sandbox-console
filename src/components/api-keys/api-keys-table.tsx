@@ -13,7 +13,11 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
-export function APIKeysTable() {
+interface APIKeysTableProps {
+    refreshTrigger: number;
+}
+
+export function APIKeysTable({ refreshTrigger }: APIKeysTableProps) {
     const { user } = useAuth();
     const [apiKeys, setApiKeys] = useState<APIKey[]>([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -29,7 +33,7 @@ export function APIKeysTable() {
         } finally {
             setIsLoading(false);
         }
-    }, [user]);
+    }, [user, refreshTrigger]);
 
     if (isLoading) {
         return (
