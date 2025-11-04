@@ -222,8 +222,12 @@ export const APIKeyService = {
         this._saveEncryptedKeys(updatedKeys);
     },
 
-    // Regenerate an API key (revokes old, creates new with same name)
+    // Regenerate an API key (replaces key while keeping metadata)
     regenerateKey(input: KeyOperationInput): APIKey {
+        if (typeof window === 'undefined') {
+            throw new Error('Cannot regenerate key in server environment');
+        }
+
         // Validate input
         const validated = KeyOperationInputSchema.parse(input);
 
@@ -236,14 +240,40 @@ export const APIKeyService = {
             throw new Error('API key not found');
         }
 
-        // Revoke old key
-        this.revokeKey(validated);
+        // Generate new key
+        const newKey = generateAPIKey();
+        const maskedKey = maskAPIKey(newKey);
 
-        // Create new key with same name
-        return this.createKey({
-            name: keyToRegenerate.name,
-            userId: validated.userId,
+        // Create updated API key with same ID and metadata
+        const regeneratedKey: APIKey = {
+            ...keyToRegenerate,
+            key: newKey,
+            maskedKey,
+            status: 'active',
+            lastUsedAt: null, // Reset last used
+        };
+
+        // Validate the regenerated key
+        const validatedKey = APIKeySchema.parse(regeneratedKey);
+
+        // Update encrypted storage
+        const allEncryptedKeys = this._getEncryptedKeys();
+        const updatedEncryptedKeys = allEncryptedKeys.map((k) => {
+            if (k.id === validated.keyId && k.userId === validated.userId) {
+                return {
+                    ...k,
+                    encryptedKey: encryptKey(newKey, validated.userId),
+                    maskedKey: validatedKey.maskedKey,
+                    status: 'active' as const,
+                    lastUsedAt: null,
+                };
+            }
+            return k;
         });
+
+        this._saveEncryptedKeys(updatedEncryptedKeys);
+
+        return validatedKey;
     },
 
     // Permanently delete an API key
