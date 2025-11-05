@@ -122,7 +122,7 @@ This choice keeps the stack cohesive a single design system for both UI and data
 
 ### Estimate of time spent
 
-I spent 3 days but from the 3 days, I spent about 4 hours to 6 hours. Hence 10 ~ 18 hours.
+I spent 3 days but from the 3 days, I spent about 4 hours to 6 hours per day. Hence 10 ~ 18 hours.
 
 ### Deployed
 
