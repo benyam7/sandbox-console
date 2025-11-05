@@ -1,4 +1,4 @@
-Decision:
+### Decision and thoughts:
 
 This project(sandboxconsole) uses a modern React setup that focuses on being easy to work with and maintain. For state management, it uses React's Context API instead of external Redux or Zustand. This makes things simpler since only authentication and theme need shared state. Routing is done with React Router v7, using nested routes and protected routes to clearly separate loggedin and public pages.
 
