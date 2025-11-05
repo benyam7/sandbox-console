@@ -1,7 +1,6 @@
 import { APIKeysTable } from '@/components/api-keys/api-keys-table';
 import { CreateAPIKeyModal } from '@/components/api-keys/create-api-key-modal';
 import { Button } from '@/components/ui/button';
-import type { APIKey } from '@/lib/schemas';
 import { Plus } from 'lucide-react';
 import { useState } from 'react';
 
@@ -9,7 +8,7 @@ export default function APIKeysPage() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [refreshTrigger, setRefreshTrigger] = useState(0);
 
-    const handleKeyCreated = (newKey: APIKey) => {
+    const handleKeyCreated = () => {
         setRefreshTrigger((prev) => prev + 1);
     };
 

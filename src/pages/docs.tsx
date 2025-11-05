@@ -1,6 +1,3 @@
-import { useState, useEffect } from 'react';
-import { useAuth } from '@/contexts/auth-context';
-import { APIKeyService } from '@/lib/api-key-service';
 import { CreateKeyInputSchema, APIKeySchema } from '@/lib/schemas';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
@@ -10,8 +7,7 @@ import { SchemaDisplay } from '@/components/docs/schema-display';
 import { getDocsConfig, generateCodeExamples } from '@/lib/docs-service';
 
 const Docs = () => {
-    const [exampleApiKey, setExampleApiKey] =
-        useState<string>('your_api_key_here');
+    const exampleApiKey = 'your_api_key_here';
 
     const { apiEndpoint } = getDocsConfig();
     const codeExamples = generateCodeExamples(exampleApiKey, apiEndpoint);

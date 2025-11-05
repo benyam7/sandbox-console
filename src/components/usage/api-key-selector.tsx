@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Button } from '@/components/ui/button';
 import {
     DropdownMenu,
@@ -49,8 +48,7 @@ export function ApiKeySelector({
                 >
                     <span className="text-sm">
                         API Keys{' '}
-                        {selectedCount < apiKeys.length &&
-                            `(${selectedCount})`}
+                        {selectedCount < apiKeys.length && `(${selectedCount})`}
                     </span>
                 </Button>
             </DropdownMenuTrigger>
@@ -85,4 +83,3 @@ export function ApiKeySelector({
         </DropdownMenu>
     );
 }
-
